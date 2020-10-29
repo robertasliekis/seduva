@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import WebsiteInfo from "./components/WebsiteInfo";
+import InteractiveMap from "./components/InteractiveMap";
+
+// "homepage": "http://https://robertasliekis.github.io/seduva/",
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="website-wrapper">
+        <Header />
+        <WebsiteInfo />
+        <InteractiveMap />
+      </div>
     </div>
   );
 }

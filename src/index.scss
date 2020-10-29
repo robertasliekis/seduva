@@ -1,0 +1,472 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  box-sizing: border-box;
+}
+
+ul {
+  padding-inline-start: 0;
+  li {
+    list-style-type: none;
+    display: block;
+  }
+}
+
+:root {
+  --global-color-background: rgb(203, 216, 240);
+  --global-color-grey-light: rgb(165, 165, 165);
+  --global-color-grey-dark: rgb(84, 91, 94);
+
+  --btn-color-blue: rgb(0, 140, 255);
+  --btn-color-orange: rgb(255, 187, 0);
+  --btn-color-green: rgb(98, 202, 0);
+}
+
+p {
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin displayFlex {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+@mixin displayFlexBetween {
+  @include displayFlex();
+  justify-content: space-between;
+}
+
+@mixin displayFlexColumn {
+  @include displayFlex();
+  flex-direction: column;
+}
+
+@mixin positionAbsoluteCenter {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+.website-wrapper {
+  @include displayFlexColumn();
+  width: 100%;
+  height: 100%;
+  background-color: var(--global-color-background);
+  padding: 3rem 0;
+}
+
+.header {
+  @include displayFlex();
+  position: fixed;
+  z-index: 6;
+  top: 0;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  height: 0;
+  .btn-audio {
+    @include displayFlex();
+    width: 4rem;
+    height: 4rem;
+    background-color: white;
+    border: 2px solid black;
+  }
+}
+
+.website-info {
+  position: relative;
+  @include displayFlexColumn();
+  justify-content: flex-start;
+  margin-bottom: 3rem;
+  height: 16rem;
+  z-index: 2;
+  h1 {
+    margin-bottom: 1rem;
+  }
+  .text-boxes-container {
+    @include displayFlex();
+    align-items: flex-start;
+    .text-box {
+      width: 30%;
+      margin: 0 1rem;
+      border: 1px solid black;
+      padding: 1rem;
+      background-color: rgb(206, 206, 206);
+      border-radius: 1rem;
+      .text {
+        text-align: justify;
+        overflow: hidden;
+        transition: 0.5s all ease;
+      }
+      .btn {
+        padding: 1rem 0;
+        background-color: white;
+        width: 10rem;
+        margin-top: 1rem;
+        transition: 0.5s all ease;
+        border: none;
+        border-radius: 0.5rem;
+        outline: none;
+      }
+      .btn:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}
+
+.interactive-map {
+  position: relative;
+  width: 100%;
+  @include displayFlexColumn();
+  .categories {
+    @include displayFlexColumn();
+    margin-bottom: 3rem;
+
+    .text-container {
+      margin-bottom: 3rem;
+      h1 {
+        margin-bottom: 1rem;
+      }
+    }
+    .buttons-container {
+      @include displayFlex();
+      .btn {
+        @include displayFlexColumn();
+        margin: 0 2rem;
+        .circle {
+          height: 4rem;
+          width: 4rem;
+          border-radius: 4rem;
+          border: 3px solid black;
+          margin-bottom: 1rem;
+          transition: 0.5s all ease;
+          cursor: pointer;
+        }
+      }
+      .btn:nth-child(1) {
+        .circle {
+          background-color: var(--btn-color-blue);
+        }
+      }
+      .btn:nth-child(2) {
+        .circle {
+          background-color: var(--btn-color-orange);
+        }
+      }
+      .btn:nth-child(3) {
+        .circle {
+          background-color: var(--btn-color-green);
+        }
+      }
+      .btn:hover {
+        .circle {
+          border: 3px solid white;
+        }
+      }
+    }
+  }
+  .map-zone-container {
+    @include displayFlexColumn();
+    position: relative;
+    width: 100%;
+    .map-image {
+      width: 60%;
+      height: 40rem;
+      background-color: rgb(201, 201, 201);
+      border-radius: 3rem;
+      border: 3px solid black;
+    }
+    .overlay-buttons {
+      @include positionAbsoluteCenter();
+      @include displayFlex();
+      width: 100%;
+      height: 100%;
+      .btn {
+        @include displayFlexColumn();
+        margin: 0 1rem;
+        .circle {
+          height: 2.5rem;
+          width: 2.5rem;
+          border-radius: 4rem;
+          border: 3px solid black;
+          cursor: pointer;
+        }
+        .logo {
+          @include displayFlex();
+          height: 4rem;
+          width: 4rem;
+          background-color: white;
+          border: 3px solid rgb(27, 27, 27);
+          margin-bottom: 1rem;
+          transition: 0.5s all ease;
+          cursor: pointer;
+        }
+        .logo-scale-animation {
+          transform: scale(1.3);
+        }
+      }
+      .btn:hover {
+        .logo {
+          transform: rotate(90deg);
+        }
+      }
+      .btn-history {
+        .circle {
+          background-color: var(--btn-color-blue);
+        }
+      }
+      .btn-legends {
+        .circle {
+          background-color: var(--btn-color-orange);
+        }
+      }
+      .btn-present {
+        .circle {
+          background-color: var(--btn-color-green);
+        }
+      }
+    }
+  }
+}
+
+.modal-window-container {
+  position: fixed;
+  @include displayFlex();
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  z-index: 3;
+  background-color: rgba($color: #ffffff, $alpha: 0.8);
+  .content {
+    width: 100%;
+    height: 100%;
+  }
+  .window-content {
+    width: 60%;
+    height: 60%;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    background-color: grey;
+    padding: 1rem;
+    .content-top {
+      @include displayFlexBetween();
+      width: 100%;
+      margin-bottom: 2rem;
+      .btn {
+        @include displayFlex();
+        width: 5rem;
+        height: 5rem;
+        background-color: white;
+        border-radius: 1rem;
+      }
+    }
+    .content-bottom {
+      @include displayFlexBetween();
+      align-items: flex-start;
+      p {
+        width: 50%;
+        text-align: justify;
+      }
+      .video-screen {
+        @include displayFlex();
+        width: 45%;
+        height: 20rem;
+        background-color: white;
+        border-radius: 1rem;
+        border: 3px solid black;
+      }
+    }
+  }
+}
+
+.window-gallery {
+  @include displayFlex();
+  .window-content {
+    height: 80%;
+    width: 80%;
+    .content-bottom {
+      @include displayFlex();
+      flex-wrap: nowrap;
+      height: 80%;
+      .btn {
+        color: white;
+        width: 8rem;
+        border: 2px solid white;
+        padding: 1rem 0;
+      }
+      .image-container {
+        @include displayFlex();
+        width: 80%;
+        height: 80%;
+        position: relative;
+        opacity: 1;
+        margin-bottom: 1rem;
+        margin-right: 0.3rem;
+        overflow: hidden;
+
+        .image-carousel-overflow {
+          position: relative;
+          width: calc(100% / 3);
+          height: 100%;
+          .image-carousel {
+            position: absolute;
+            //  animation: 15s image-carousel-animation infinite;
+            @include displayFlex();
+            transition-duration: 0.5s;
+            height: 100%;
+            width: 800%;
+            .image {
+              width: calc(100% / 5);
+              height: 100%;
+              background-position: center;
+              background-size: cover;
+            }
+            .image:nth-child(1) {
+              background-image: url("./images/simkunaite/simkunaite1.jpg");
+            }
+            .image:nth-child(2) {
+              background-image: url("./images/simkunaite/simkunaite2.jpg");
+            }
+            .image:nth-child(3) {
+              background-image: url("./images/simkunaite/simkunaite3.jpg");
+            }
+            .image:nth-child(4) {
+              background-image: url("./images/simkunaite/simkunaite4.jpg");
+            }
+            .image:nth-child(5) {
+              background-image: url("./images/simkunaite/simkunaite1.jpg");
+            }
+            .image:nth-child(6) {
+              background-image: url("./images/simkunaite/simkunaite3.jpg");
+            }
+            .image:nth-child(7) {
+              background-image: url("./images/simkunaite/simkunaite4.jpg");
+            }
+            .image:nth-child(8) {
+              background-image: url("./images/simkunaite/simkunaite1.jpg");
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes image-carousel-animation {
+  0% {
+    left: 0;
+  }
+  20% {
+    left: 0;
+  }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: -100%;
+  }
+  50% {
+    left: -200%;
+  }
+  70% {
+    left: -200%;
+  }
+  75% {
+    left: -300%;
+  }
+  95% {
+    left: -300%;
+  }
+  100% {
+    left: -400%;
+  }
+}
+
+.window-virtual-reality {
+  .window-content {
+    position: relative;
+    height: 90%;
+    width: 90%;
+    padding: 0;
+    .content-top {
+      @include positionAbsoluteCenter();
+      transform: translate(-50%, 0);
+      top: 0;
+      justify-content: flex-end;
+      z-index: 1;
+    }
+    .content-bottom {
+      position: relative;
+      @include displayFlex();
+      height: 100%;
+      width: 100%;
+
+      .vr-video-container {
+        width: 100%;
+        height: 100%;
+        background-image: url("./images/virtual_reality_video.jpg");
+        background-position: center;
+        background-size: cover;
+      }
+      .btn-container {
+        @include positionAbsoluteCenter();
+        @include displayFlex();
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #ffffff, $alpha: 0.5);
+
+        .btn {
+          font-size: 3rem;
+          background-color: rgb(65, 65, 65);
+          color: white;
+          border: 1px solid white;
+          padding: 1rem 2rem;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}
