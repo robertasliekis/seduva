@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import audioBackground from "../audio/sounds.mp3";
 
@@ -23,7 +24,11 @@ export class Header extends Component {
   render() {
     return (
       <div className="header">
-        <div className="btn btn-audio" onClick={this.btnPlayBackgroundAudio}>
+        <div
+          className="btn btn-audio"
+          onClick={this.btnPlayBackgroundAudio}
+          style={{ marginRight: this.props.mapEntered ? "17px" : "0px" }}
+        >
           AUDIO
         </div>
         <audio loop ref={this.audioBackgroundRef}>
@@ -34,4 +39,14 @@ export class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    mapEntered: state.mouseEnterMap.mapEntered
+  };
+};
+
+const mapDispatchToProps = {
+  // changePageNumber,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

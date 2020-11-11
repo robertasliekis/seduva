@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 export class WebsiteInfo extends Component {
   constructor(props) {
@@ -21,29 +22,44 @@ export class WebsiteInfo extends Component {
   };
   render() {
     return (
-      <div className="website-info">
-        <h1>ŠEDUVA: KELIONĖ LAIKU</h1>
+      <div
+        className="website-info"
+        style={
+          {
+            // height: this.props.mapEntered ? "40rem" : "16rem"
+          }
+        }
+      >
+        <h1 className="website-info-heading">Šeduva: kelionė laiku</h1>
         <div className="text-boxes-container">
           <div className="text-box">
-            <p className="text" style={{ height: this.state.readMoreLtClicked ? "15rem" : "6rem" }}>
+            <h1>Apie projektą:</h1>
+            <p className="text" style={{ height: this.state.readMoreLtClicked ? "12rem" : "6rem" }}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem
+              adipisci, praesentium molestias illum facere iste sit! Itaque, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem adipisci, praesentium molestias illum facere iste sit! Itaque,
+              amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem
               adipisci, praesentium molestias illum facere iste sit! Itaque, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem adipisci, praesentium molestias illum facere iste sit! Itaque,
               amet?
             </p>
             <button className="btn btn-read-more" onClick={this.readMoreLtClicked}>
-              SKAITYTI DAUGIAU
+              Skaityti daugiau
             </button>
           </div>
           <div className="text-box">
-            <p className="text " style={{ height: this.state.readMoreEnClicked ? "15rem" : "6rem" }}>
+            <h1>About project:</h1>
+            <p className="text " style={{ height: this.state.readMoreEnClicked ? "12rem" : "6rem" }}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem
+              adipisci, praesentium molestias illum facere iste sit! Itaque, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem adipisci, praesentium molestias illum facere iste sit! Itaque,
+              amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem
               adipisci, praesentium molestias illum facere iste sit! Itaque, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem adipisci, praesentium molestias illum facere iste sit! Itaque,
               amet?
             </p>
             <button className="btn btn-read-more" onClick={this.readMoreEnClicked}>
-              READ MORE
+              Read more
             </button>
           </div>
         </div>
@@ -52,4 +68,14 @@ export class WebsiteInfo extends Component {
   }
 }
 
-export default WebsiteInfo;
+const mapStateToProps = (state) => {
+  return {
+    mapEntered: state.mouseEnterMap.mapEntered
+  };
+};
+
+const mapDispatchToProps = {
+  // changePageNumber,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WebsiteInfo);

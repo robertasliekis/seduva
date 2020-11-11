@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { mouseEnterMap, setScrollPosition } from "../actions";
 
 import image1Url from "../images/simkunaite/simkunaite1.jpg";
 import image2Url from "../images/simkunaite/simkunaite2.jpg";
@@ -19,7 +22,10 @@ export class InteractiveMap extends Component {
       containerGalleryOpen: false,
       containerVROpen: false,
       galleryImageIndex: 1,
-      confirmVROpen: false
+      confirmVROpen: false,
+      mapZoomLevel: 1,
+      scrollPosition: 0,
+      mouseEnterMap: true
     };
     //  this.videoRef = React.createRef();
   }
@@ -52,6 +58,43 @@ export class InteractiveMap extends Component {
     this.setState({
       iconPresentHovered: false
     });
+  };
+
+  mapZoomHandler = (event) => {
+    console.log("wheel");
+    console.log(this.state.mapZoomLevel);
+    let initialState = this.state.mapZoomLevel;
+
+    if (event.deltaY > 0 && this.state.mapZoomLevel <= 2) {
+      this.setState({ mapZoomLevel: initialState + 0.1 });
+    } else if (event.deltaY < 0 && this.state.mapZoomLevel > 1) {
+      this.setState({ mapZoomLevel: initialState - 0.1 });
+    }
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.mapEntered != prevProps.mapEntered) {
+      if (!this.props.mapEntered) {
+        window.scrollTo(0, this.state.scrollPosition);
+      }
+    }
+  }
+
+  mouseEnterMapHandler = () => {
+    // this.setState({ mouseEnterMap: true });
+    this.props.mouseEnterMap(true);
+    this.setState({ scrollPosition: window.pageYOffset });
+    this.props.setScrollPosition(window.pageYOffset);
+  };
+
+  mouseLeaveMapHandler = () => {
+    //this.setState({ mouseEnterMap: false });
+    this.props.mouseEnterMap(false);
+    this.props.setScrollPosition(0);
+  };
+
+  resetZoomHandler = () => {
+    this.setState({ mapZoomLevel: 1 });
   };
 
   btnGalleryOpenClicked = () => {
@@ -92,6 +135,10 @@ export class InteractiveMap extends Component {
     this.setState({ confirmVROpen: true });
   };
 
+  componentDidMount() {
+    // window.scrollTo(1, 500);
+  }
+
   render() {
     const logoHistoryClass = this.state.iconHistoryHovered ? "logo-scale-animation" : "";
     const logoLegendsClass = this.state.iconLegendsHovered ? "logo-scale-animation" : "";
@@ -125,45 +172,58 @@ export class InteractiveMap extends Component {
           </div>
         </div>
         <div className="map-zone-container">
-          <div className="map-image"></div>
-          <div className="overlay-buttons">
-            <div className="btn btn-history" onClick={this.btnGalleryOpenClicked}>
-              <div className={"logo " + logoHistoryClass}>Galerija</div>
-              <div className="circle"></div>
+          <div className="map-zone-overflow-wrapper">
+            <div className="btn btn-reset-map-zoom" onClick={this.resetZoomHandler}>
+              RESET ZOOM
             </div>
-            <div className="btn btn-history" onClick={this.btnAudioOpenClicked}>
-              <div className={"logo " + logoHistoryClass}>Babos audio</div>
-              <div className="circle"></div>
-            </div>
-            <div className="btn btn-legends" onClick={this.btnVideoOpenClicked}>
-              <div className={"logo " + logoLegendsClass}>Video</div>
+            <div
+              className="map-zone-frame"
+              onWheel={(event) => this.mapZoomHandler(event)}
+              onMouseEnter={this.mouseEnterMapHandler}
+              onMouseLeave={this.mouseLeaveMapHandler}
+              style={{ transform: `scale(${this.state.mapZoomLevel})` }}
+            >
+              <div className="map-image"></div>
+              <div className="overlay-buttons">
+                <div className="btn btn-history" onClick={this.btnGalleryOpenClicked}>
+                  <div className={"logo " + logoHistoryClass}>Galerija</div>
+                  <div className="circle"></div>
+                </div>
+                <div className="btn btn-history" onClick={this.btnAudioOpenClicked}>
+                  <div className={"logo " + logoHistoryClass}>Babos audio</div>
+                  <div className="circle"></div>
+                </div>
+                <div className="btn btn-legends" onClick={this.btnVideoOpenClicked}>
+                  <div className={"logo " + logoLegendsClass}>Video</div>
 
-              <div className="circle"></div>
-            </div>
-            <div className="btn btn-legends">
-              <div className={"logo " + logoLegendsClass}></div>
+                  <div className="circle"></div>
+                </div>
+                <div className="btn btn-legends">
+                  <div className={"logo " + logoLegendsClass}></div>
 
-              <div className="circle"></div>
-            </div>
-            <div className="btn btn-legends">
-              <div className={"logo " + logoLegendsClass}></div>
+                  <div className="circle"></div>
+                </div>
+                <div className="btn btn-legends">
+                  <div className={"logo " + logoLegendsClass}></div>
 
-              <div className="circle"></div>
-            </div>
-            <div className="btn btn-present" onClick={this.btnVROpenClicked}>
-              <div className={"logo " + logoPresentClass}>VR</div>
+                  <div className="circle"></div>
+                </div>
+                <div className="btn btn-present" onClick={this.btnVROpenClicked}>
+                  <div className={"logo " + logoPresentClass}>VR</div>
 
-              <div className="circle"></div>
-            </div>
-            <div className="btn btn-present">
-              <div className={"logo " + logoPresentClass}></div>
+                  <div className="circle"></div>
+                </div>
+                <div className="btn btn-present">
+                  <div className={"logo " + logoPresentClass}></div>
 
-              <div className="circle"></div>
-            </div>
-            <div className="btn btn-present">
-              <div className={"logo " + logoPresentClass}></div>
+                  <div className="circle"></div>
+                </div>
+                <div className="btn btn-present">
+                  <div className={"logo " + logoPresentClass}></div>
 
-              <div className="circle"></div>
+                  <div className="circle"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -259,4 +319,15 @@ export class InteractiveMap extends Component {
   }
 }
 
-export default InteractiveMap;
+const mapStateToProps = (state) => {
+  return {
+    mapEntered: state.mouseEnterMap.mapEntered
+  };
+};
+
+const mapDispatchToProps = {
+  mouseEnterMap,
+  setScrollPosition
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InteractiveMap);
