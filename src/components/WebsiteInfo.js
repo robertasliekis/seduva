@@ -30,11 +30,14 @@ export class WebsiteInfo extends Component {
           }
         }
       >
-        <h1 className="website-info-heading">Šeduva: kelionė laiku</h1>
+        <div className="website-info-top">
+          <h1>Šeduva: kelionė laiku</h1>
+          <div className="map-image"></div>
+        </div>
         <div className="text-boxes-container">
           <div className="text-box">
             <h1>Apie projektą:</h1>
-            <p className="text" style={{ height: this.state.readMoreLtClicked ? "12rem" : "6rem" }}>
+            <p className="text" style={{ height: this.state.readMoreLtClicked ? "12rem" : "7.5rem" }}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem
               adipisci, praesentium molestias illum facere iste sit! Itaque, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem adipisci, praesentium molestias illum facere iste sit! Itaque,
@@ -49,7 +52,7 @@ export class WebsiteInfo extends Component {
           </div>
           <div className="text-box">
             <h1>About project:</h1>
-            <p className="text " style={{ height: this.state.readMoreEnClicked ? "12rem" : "6rem" }}>
+            <p className="text " style={{ height: this.state.readMoreEnClicked ? "12rem" : "7.5rem" }}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem
               adipisci, praesentium molestias illum facere iste sit! Itaque, amet? Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem adipisci, praesentium molestias illum facere iste sit! Itaque,

@@ -5,7 +5,6 @@ const initialState = {
 const setScrollPosition = (state = initialState, action) => {
   switch (action.type) {
     case "SET_SCROLL_POSITION":
-      console.log(action.payload);
       return { ...state, scrollPosition: action.payload };
     default:
       return state;
