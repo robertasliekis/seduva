@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "//robertasliekis.github.io/seduva/static/css/main.5c5e0e5b.chunk.css",
-    "main.js": "//robertasliekis.github.io/seduva/static/js/main.90a9f891.chunk.js",
-    "main.js.map": "//robertasliekis.github.io/seduva/static/js/main.90a9f891.chunk.js.map",
+    "main.js": "//robertasliekis.github.io/seduva/static/js/main.01a2cb27.chunk.js",
+    "main.js.map": "//robertasliekis.github.io/seduva/static/js/main.01a2cb27.chunk.js.map",
     "runtime-main.js": "//robertasliekis.github.io/seduva/static/js/runtime-main.1ba5d640.js",
     "runtime-main.js.map": "//robertasliekis.github.io/seduva/static/js/runtime-main.1ba5d640.js.map",
     "static/js/2.c253af7d.chunk.js": "//robertasliekis.github.io/seduva/static/js/2.c253af7d.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.1ba5d640.js",
     "static/js/2.c253af7d.chunk.js",
     "static/css/main.5c5e0e5b.chunk.css",
-    "static/js/main.90a9f891.chunk.js"
+    "static/js/main.01a2cb27.chunk.js"
   ]
 }
