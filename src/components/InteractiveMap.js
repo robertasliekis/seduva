@@ -13,6 +13,34 @@ import { mouseEnterMap, setScrollPosition } from "../actions";
 import videoAbout from "../video/video.mp4";
 import audioAbout from "../audio/about.mp3";
 
+const imageNumbers = [1, 2, 3, 4, 5];
+
+const categoriesNames = [
+  ["Šeduvos istorija", "history"],
+  ["Šeduvos legendos", "legends"],
+  ["Šeduva dabar", "present"]
+];
+
+const iconNames = [
+  ["history", "gallery"],
+  ["history", "audio"],
+  ["legends", "video"],
+  ["legends", "video"],
+  ["legends", "video"],
+  ["legends", "video"],
+  ["legends", "video"],
+  ["legends", "video"],
+  ["legends", "video"],
+  ["present", "vr"],
+  ["present", "vr"],
+  ["present", "vr"],
+  ["present", "vr"],
+  ["present", "vr"],
+  ["present", "vr"],
+  ["present", "vr"],
+  ["present", "vr"]
+];
+
 export class InteractiveMap extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +54,7 @@ export class InteractiveMap extends Component {
       mouseEnterMap: true,
       mediaPlayState: false
     };
+    this.domRefs = {};
     this.videoAboutRef = React.createRef();
     this.audioAboutRef = React.createRef();
   }
@@ -40,6 +69,10 @@ export class InteractiveMap extends Component {
     });
   };
 
+  mouseEnterMapIcon = (ref) => {
+    console.log(ref);
+  };
+
   mapZoomHandler = (event) => {
     let initialState = this.state.mapZoomLevel;
     if (event.deltaY > 0 && this.state.mapZoomLevel <= 2) {
@@ -50,22 +83,25 @@ export class InteractiveMap extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.mapEntered !== prevProps.mapEntered) {
-      if (!this.props.mapEntered) {
-        window.scrollTo(0, this.state.scrollPosition);
+    if (this.state.iconTypeHovered !== prevState.iconTypeHovered) {
+      for (let i = 0; i < iconNames.length; i++) {
+        this.domRefs[i].classList.remove("logo-scale-animation");
+        if (this.state.iconTypeHovered !== "") {
+          if (this.domRefs[i].classList.contains(`logo-${this.state.iconTypeHovered}`)) {
+            this.domRefs[i].classList.add("logo-scale-animation");
+          }
+        }
       }
     }
   }
 
   mouseEnterMapHandler = () => {
-    // this.setState({ mouseEnterMap: true });
     this.props.mouseEnterMap(true);
     this.setState({ scrollPosition: window.pageYOffset });
     this.props.setScrollPosition(window.pageYOffset);
   };
 
   mouseLeaveMapHandler = () => {
-    //this.setState({ mouseEnterMap: false });
     this.props.mouseEnterMap(false);
     this.props.setScrollPosition(0);
   };
@@ -113,121 +149,63 @@ export class InteractiveMap extends Component {
   componentDidMount() {}
 
   render() {
-    const logoHistoryClass = this.state.iconTypeHovered === "history" ? "logo-scale-animation" : "";
-    const logoLegendsClass = this.state.iconTypeHovered === "legends" ? "logo-scale-animation" : "";
-    const logoPresentClass = this.state.iconTypeHovered === "present" ? "logo-scale-animation" : "";
-
-    const imageNumbers = [1, 2, 3, 4, 5];
-
-    const buttonNames = [
-      ["Šeduvos istorija", "history"],
-      ["Šeduvos legendos", "legends"],
-      ["Šeduva dabar", "present"]
-    ];
+    //  const logoHistoryClass = this.state.iconTypeHovered === "history" ? "logo-scale-animation" : "";
+    // const logoLegendsClass = this.state.iconTypeHovered === "legends" ? "logo-scale-animation" : "";
+    //  const logoPresentClass = this.state.iconTypeHovered === "present" ? "logo-scale-animation" : "";
 
     return (
-      <div className="interactive-map">
-        <div className="categories">
-          <div className="text-container">
-            <h1>Pasirinkite kategoriją - aprašymą</h1>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet nulla nemo nostrum voluptates repellat soluta est quasi
-              deleniti? Vero, excepturi?
-            </p>
-          </div>
-          <div className="buttons-container">
-            {buttonNames.map((button) => {
-              return (
-                <div
-                  className="btn"
-                  onMouseEnter={() => {
-                    this.mouseEnterIconHandler(button[1]);
-                  }}
-                  onMouseLeave={this.mouseLeaveIconHandler}
-                >
-                  <div className="circle"></div>
-                  <p>{button[0]}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="map-zone-container">
-          <div className="map-zone-overflow-wrapper">
-            <div className="btn btn-reset-map-zoom" onClick={this.resetZoomHandler}>
-              RESET ZOOM
+      <div className="interactive-map-section">
+        <div className="map-container">
+          <div className="map-images-container">
+            <div className="main-map-image"></div>
+            <div className="map-icons-container">
+              {iconNames.map((icon, index) => {
+                return (
+                  <div
+                    className={`btn btn-${icon[0]}`}
+                    key={`${icon[0]}${index}`}
+                    onClick={() => {
+                      this.openContainerClicked(icon[1]);
+                    }}
+                  >
+                    <div
+                      ref={(ref) => {
+                        this.domRefs[index] = ref;
+                      }}
+                      key={index}
+                      className={`logo logo-${icon[0]}`}
+                    ></div>
+                  </div>
+                );
+              })}
+
+              {/* icons end-------------------------- */}
             </div>
-            <div
-              className="map-zone-frame"
-              onWheel={(event) => this.mapZoomHandler(event)}
-              onMouseEnter={this.mouseEnterMapHandler}
-              onMouseLeave={this.mouseLeaveMapHandler}
-              style={{ transform: `scale(${this.state.mapZoomLevel})` }}
-            >
-              <div className="map-image"></div>
-              <div className="overlay-buttons">
-                <div
-                  className="btn btn-history"
-                  onClick={() => {
-                    this.openContainerClicked("gallery");
-                  }}
-                >
-                  <div className={"logo " + logoHistoryClass}>Galerija</div>
-                  <div className="circle"></div>
-                </div>
-                <div
-                  className="btn btn-history"
-                  onClick={() => {
-                    this.openContainerClicked("audio");
-                  }}
-                >
-                  <div className={"logo " + logoHistoryClass}>Babos audio</div>
-                  <div className="circle"></div>
-                </div>
-                <div
-                  className="btn btn-legends"
-                  onClick={() => {
-                    this.openContainerClicked("video");
-                  }}
-                >
-                  <div className={"logo " + logoLegendsClass}>Video</div>
-
-                  <div className="circle"></div>
-                </div>
-                <div className="btn btn-legends">
-                  <div className={"logo " + logoLegendsClass}></div>
-
-                  <div className="circle"></div>
-                </div>
-                <div className="btn btn-legends">
-                  <div className={"logo " + logoLegendsClass}></div>
-
-                  <div className="circle"></div>
-                </div>
-                <div
-                  className="btn btn-present"
-                  onClick={() => {
-                    this.openContainerClicked("vr");
-                  }}
-                >
-                  <div className={"logo " + logoPresentClass}>VR</div>
-
-                  <div className="circle"></div>
-                </div>
-                <div className="btn btn-present">
-                  <div className={"logo " + logoPresentClass}></div>
-
-                  <div className="circle"></div>
-                </div>
-                <div className="btn btn-present">
-                  <div className={"logo " + logoPresentClass}></div>
-
-                  <div className="circle"></div>
-                </div>
-              </div>
+          </div>
+          <div className="categories">
+            <div className="text-container">
+              <h1>Rinkis kategoriją:</h1>
+            </div>
+            <div className="buttons-container">
+              {categoriesNames.map((category, index) => {
+                return (
+                  <div
+                    className={`btn btn-${category[0]}`}
+                    key={`key${index}`}
+                    onMouseEnter={() => {
+                      this.mouseEnterIconHandler(category[1]);
+                    }}
+                    onMouseLeave={this.mouseLeaveIconHandler}
+                  >
+                    <div className="circle"></div>
+                    <p>{category[0]}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
+
         {/* Video container */}
         <div className="modal-window-container window-video" style={{ display: this.state.containerType === "video" ? "flex" : "none" }}>
           <div className="window-content">

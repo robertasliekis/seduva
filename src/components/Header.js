@@ -24,13 +24,10 @@ export class Header extends Component {
   render() {
     return (
       <div className="header">
-        <div
-          className="btn btn-audio"
-          onClick={this.btnPlayBackgroundAudio}
-          style={{ marginRight: this.props.mapEntered ? "17px" : "0px" }}
-        >
-          AUDIO
+        <div className="btn btn-audio" onClick={this.btnPlayBackgroundAudio}>
+          {this.state.playBackgroundAudio ? <div className="icon icon-audio-pause"></div> : <div className="icon icon-audio-play"></div>}
         </div>
+
         <audio loop ref={this.audioBackgroundRef}>
           <source src={audioBackground}></source>
         </audio>
