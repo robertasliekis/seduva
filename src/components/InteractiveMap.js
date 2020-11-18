@@ -41,11 +41,73 @@ const iconNames = [
   ["present", "vr"]
 ];
 
+const iconInnactiveUrl = [
+  "/images/seduvos istorija - icon 1-1-01.png",
+  "/images/seduvos istorija - icon 2-1-01.png",
+  "/images/seduvos legendos 1-1-01.png",
+  "./images/seduvos legendos 2-1-01.png",
+  "./images/seduvos legendos 3-1-01.png",
+  "./images/seduvos legendos 4-1-01.png",
+  "./images/seduvos legendos 5-1-01.png",
+  "./images/seduvos legendos 6-1-01.png",
+  "./images/seduvos legendos 7-1-01.png",
+  "./images/seduva dabar 1-1-01.png",
+  "./images/seduva dabar 2-1-01.png",
+  "./images/seduva dabar 3-1-01.png",
+  "./images/seduva dabar 4-1-01.png",
+  "./images/seduva dabar 5-1-01.png",
+  "./images/seduva dabar 6-1-01.png",
+  "./images/seduva dabar 7-1-01.png",
+  "./images/seduva dabar 8-1-01.png"
+];
+
+const iconHoveredUrl = [
+  "/images/seduvos istorija - icon 1-2-01.png",
+  "/images/seduvos istorija - icon 2-2-01.png",
+  "/images/seduvos legendos 1-2-01.png",
+  "./images/seduvos legendos 2-2-01.png",
+  "./images/seduvos legendos 3-2-01.png",
+  "./images/seduvos legendos 4-2-01.png",
+  "./images/seduvos legendos 5-2-01.png",
+  "./images/seduvos legendos 6-2-01.png",
+  "./images/seduvos legendos 7-2-01.png",
+  "./images/seduva dabar 1-2-01.png",
+  "./images/seduva dabar 2-2-01.png",
+  "./images/seduva dabar 3-2-01.png",
+  "./images/seduva dabar 4-2-01.png",
+  "./images/seduva dabar 5-2-01.png",
+  "./images/seduva dabar 6-2-01.png",
+  "./images/seduva dabar 7-2-01.png",
+  "./images/seduva dabar 8-2-01.png"
+];
+
+const iconClickedUrl = [
+  "/images/seduvos istorija - icon 1-3-01.png",
+  "/images/seduvos istorija - icon 2-3-01.png",
+  "/images/seduvos legendos 1-3-01.png",
+  "./images/seduvos legendos 2-3-01.png",
+  "./images/seduvos legendos 3-3-01.png",
+  "./images/seduvos legendos 4-3-01.png",
+  "./images/seduvos legendos 5-3-01.png",
+  "./images/seduvos legendos 6-3-01.png",
+  "./images/seduvos legendos 7-3-01.png",
+  "./images/seduva dabar 1-3-01.png",
+  "./images/seduva dabar 2-3-01.png",
+  "./images/seduva dabar 3-3-01.png",
+  "./images/seduva dabar 4-3-01.png",
+  "./images/seduva dabar 5-3-01.png",
+  "./images/seduva dabar 6-3-01.png",
+  "./images/seduva dabar 7-3-01.png",
+  "./images/seduva dabar 8-3-01.png"
+];
+
 export class InteractiveMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      iconTypeHovered: "",
+      categoryTypeHovered: "",
+      categoryTypeClicked: "",
+      categoryRef: "",
       containerType: "",
       galleryImageIndex: 0,
       confirmVROpen: false,
@@ -54,18 +116,30 @@ export class InteractiveMap extends Component {
       mouseEnterMap: true,
       mediaPlayState: false
     };
-    this.domRefs = {};
+    this.categoriesRefs = {};
+    this.logoInnactiveRefs = {};
+    this.logoHoveredRefs = {};
+    this.logoClickedRefs = {};
     this.videoAboutRef = React.createRef();
     this.audioAboutRef = React.createRef();
   }
-  mouseEnterIconHandler = (type) => {
+  mouseEnterCategory = (type) => {
     this.setState({
-      iconTypeHovered: type
+      categoryTypeHovered: type
+      //categoryTypeClicked: ""
     });
   };
-  mouseLeaveIconHandler = () => {
+  mouseLeaveCategory = () => {
     this.setState({
-      iconTypeHovered: ""
+      categoryTypeHovered: ""
+      // categoryTypeClicked: ""
+    });
+  };
+
+  mouseClickCategory = (type, ref) => {
+    this.setState({
+      categoryTypeClicked: type,
+      categoryRef: ref
     });
   };
 
@@ -83,13 +157,43 @@ export class InteractiveMap extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.iconTypeHovered !== prevState.iconTypeHovered) {
+    if (this.state.categoryTypeHovered !== prevState.categoryTypeHovered) {
+      if (this.state.categoryTypeClicked !== "") {
+        for (let i = 0; i < 3; i++) {
+          // this.categoriesRefs[i].classList.remove(`btn-border-${categoriesNames[i][1]}`);
+        }
+      }
+
       for (let i = 0; i < iconNames.length; i++) {
-        this.domRefs[i].classList.remove("logo-scale-animation");
-        if (this.state.iconTypeHovered !== "") {
-          if (this.domRefs[i].classList.contains(`logo-${this.state.iconTypeHovered}`)) {
-            this.domRefs[i].classList.add("logo-scale-animation");
+        this.logoHoveredRefs[i].style.opacity = 0;
+        if (this.state.categoryTypeHovered !== "") {
+          if (this.logoHoveredRefs[i].classList.contains(`logo-${this.state.categoryTypeHovered}`)) {
+            this.logoHoveredRefs[i].style.opacity = 1;
           }
+        } else this.logoHoveredRefs[i].style.opacity = 0;
+      }
+    }
+    if (this.state.categoryTypeClicked !== prevState.categoryTypeClicked) {
+      for (let i = 0; i < iconNames.length; i++) {
+        this.logoClickedRefs[i].style.opacity = 0;
+        //  if (this.state.categoryTypeClicked !== "") {
+        for (let i = 0; i < 3; i++) {
+          this.categoriesRefs[i].classList.remove(`btn-border-${categoriesNames[i][1]}`);
+        }
+        this.state.categoryRef.classList.add(`btn-border-${this.state.categoryTypeClicked}`);
+        if (this.logoClickedRefs[i].classList.contains(`logo-${this.state.categoryTypeClicked}`)) {
+          this.logoInnactiveRefs[i].style.opacity = 0;
+          this.logoHoveredRefs[i].style.opacity = 0;
+          this.logoClickedRefs[i].style.opacity = 1;
+          this.logoClickedRefs[i].style.pointerEvents = "auto";
+          this.logoClickedRefs[i].classList.add("logo-animation");
+        } else {
+          this.logoInnactiveRefs[i].style.opacity = 1;
+          this.logoClickedRefs[i].style.opacity = 0;
+          this.logoClickedRefs[i].style.pointerEvents = "none";
+          // this.state.categoryRef.classList.remove(`btn-border-history`);
+          // this.state.categoryRef.classList.remove(`btn-border-legends`);
+          //  this.state.categoryRef.classList.remove(`btn-border-present`);
         }
       }
     }
@@ -149,10 +253,6 @@ export class InteractiveMap extends Component {
   componentDidMount() {}
 
   render() {
-    //  const logoHistoryClass = this.state.iconTypeHovered === "history" ? "logo-scale-animation" : "";
-    // const logoLegendsClass = this.state.iconTypeHovered === "legends" ? "logo-scale-animation" : "";
-    //  const logoPresentClass = this.state.iconTypeHovered === "present" ? "logo-scale-animation" : "";
-
     return (
       <div className="interactive-map-section">
         <div className="map-container">
@@ -161,19 +261,30 @@ export class InteractiveMap extends Component {
             <div className="map-icons-container">
               {iconNames.map((icon, index) => {
                 return (
-                  <div
-                    className={`btn btn-${icon[0]}`}
-                    key={`${icon[0]}${index}`}
-                    onClick={() => {
-                      this.openContainerClicked(icon[1]);
-                    }}
-                  >
+                  <div className={`btn btn-${icon[0]}`} key={`${icon[0]}${index}`}>
                     <div
                       ref={(ref) => {
-                        this.domRefs[index] = ref;
+                        this.logoInnactiveRefs[index] = ref;
                       }}
-                      key={index}
-                      className={`logo logo-${icon[0]}`}
+                      className={`logo logo-${icon[0]} logo-innactive`}
+                      style={{ backgroundImage: `url("${iconInnactiveUrl[index]}")` }}
+                    ></div>
+                    <div
+                      ref={(ref) => {
+                        this.logoHoveredRefs[index] = ref;
+                      }}
+                      className={`logo logo-${icon[0]} logo-hovered`}
+                      style={{ backgroundImage: `url("${iconHoveredUrl[index]}")` }}
+                    ></div>
+                    <div
+                      onClick={() => {
+                        this.openContainerClicked(icon[1]);
+                      }}
+                      ref={(ref) => {
+                        this.logoClickedRefs[index] = ref;
+                      }}
+                      className={`logo logo-${icon[0]} logo-clicked`}
+                      style={{ backgroundImage: `url("${iconClickedUrl[index]}")` }}
                     ></div>
                   </div>
                 );
@@ -190,12 +301,18 @@ export class InteractiveMap extends Component {
               {categoriesNames.map((category, index) => {
                 return (
                   <div
-                    className={`btn btn-${category[0]}`}
+                    className={`btn btn-${category[1]}`}
                     key={`key${index}`}
-                    onMouseEnter={() => {
-                      this.mouseEnterIconHandler(category[1]);
+                    ref={(ref) => {
+                      this.categoriesRefs[index] = ref;
                     }}
-                    onMouseLeave={this.mouseLeaveIconHandler}
+                    onMouseEnter={() => {
+                      this.mouseEnterCategory(category[1]);
+                    }}
+                    onMouseLeave={this.mouseLeaveCategory}
+                    onClick={() => {
+                      this.mouseClickCategory(category[1], this.categoriesRefs[index]);
+                    }}
                   >
                     <div className="circle"></div>
                     <p>{category[0]}</p>
@@ -222,18 +339,14 @@ export class InteractiveMap extends Component {
                     this.buttonPlayClickedHandler(this.videoAboutRef);
                   }}
                   style={{ display: this.state.mediaPlayState ? "none" : "flex" }}
-                >
-                  PLAY
-                </div>
+                ></div>
                 <div
                   className="btn btn-play btn-pause"
                   onClick={() => {
                     this.buttonPlayClickedHandler(this.videoAboutRef);
                   }}
                   style={{ display: this.state.mediaPlayState ? "flex" : "none" }}
-                >
-                  PAUSE
-                </div>
+                ></div>
               </div>
 
               <div
@@ -241,9 +354,7 @@ export class InteractiveMap extends Component {
                 onClick={() => {
                   this.openContainerClicked("video");
                 }}
-              >
-                X
-              </div>
+              ></div>
             </div>
             <div className="content-bottom">
               <h1>Babos video</h1>
@@ -274,23 +385,17 @@ export class InteractiveMap extends Component {
                     this.buttonPlayClickedHandler(this.audioAboutRef);
                   }}
                   style={{ display: this.state.mediaPlayState ? "none" : "flex" }}
-                >
-                  PLAY
-                </div>
+                ></div>
                 <div
                   className="btn btn-play btn-pause"
                   onClick={() => {
                     this.buttonPlayClickedHandler(this.audioAboutRef);
                   }}
                   style={{ display: this.state.mediaPlayState ? "flex" : "none" }}
-                >
-                  PAUSE
-                </div>
+                ></div>
               </div>
 
-              <div className="btn btn-close" onClick={this.openContainerClicked}>
-                X
-              </div>
+              <div className="btn btn-close" onClick={this.openContainerClicked}></div>
             </div>
             <div className="content-bottom">
               <h1>Babos audio</h1>
@@ -319,22 +424,18 @@ export class InteractiveMap extends Component {
                     className="btn btn-gallery btn-previous"
                     onClick={this.previousImageClicked}
                     style={{
-                      opacity: this.state.galleryImageIndex === 0 ? 0.5 : 1,
+                      opacity: this.state.galleryImageIndex === 0 ? 0.6 : 1,
                       cursor: this.state.galleryImageIndex === 0 ? "default" : "pointer"
                     }}
-                  >
-                    PREVIUOS
-                  </div>
+                  ></div>
                   <div
                     className="btn btn-gallery btn-next"
                     onClick={this.nextImageClicked}
                     style={{
-                      opacity: this.state.galleryImageIndex === 4 ? 0.5 : 1,
+                      opacity: this.state.galleryImageIndex === 4 ? 0.6 : 1,
                       cursor: this.state.galleryImageIndex === 4 ? "default" : "pointer"
                     }}
-                  >
-                    NEXT
-                  </div>
+                  ></div>
                 </div>
                 <div className={`image-container`}>
                   <div className="image-carousel-overflow">
@@ -346,9 +447,7 @@ export class InteractiveMap extends Component {
                   </div>
                 </div>
               </div>
-              <div className="btn btn-close" onClick={this.openContainerClicked}>
-                Close
-              </div>
+              <div className="btn btn-close" onClick={this.openContainerClicked}></div>
             </div>
             <div className="content-bottom">
               <div className={`image-container`}>
@@ -376,18 +475,10 @@ export class InteractiveMap extends Component {
           style={{ display: this.state.containerType === "vr" ? "flex" : "none" }}
         >
           <div className="window-content">
-            <div className="content-top">
-              <div className="btn btn-close" onClick={this.openContainerClicked}>
-                Close
-              </div>
-            </div>
-            <div className="content-bottom">
-              <div className="vr-video-container"></div>
-              <div className="btn-container" style={{ display: this.state.confirmVROpen ? "none" : "flex" }}>
-                <div className="btn btn-confirm-vr" onClick={this.btnVRConfirmClicked}>
-                  Jūs įeinate į 360° VRT
-                </div>
-              </div>
+            <div className="btn btn-close" onClick={this.openContainerClicked}></div>
+            <p>Jūs įeinate į 360° VRT</p>
+            <div className="btn btn-confirm-vr" onClick={this.btnVRConfirmClicked}>
+              Ok
             </div>
           </div>
         </div>

@@ -46,9 +46,9 @@ export class WebsiteInfo extends Component {
               Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem adipisci, praesentium molestias illum facere iste sit! Itaque,
               amet?
             </p>
-            <button className="btn btn-read-more" onClick={this.readMoreLtClicked}>
+            <div className="btn btn-read-more" onClick={this.readMoreLtClicked}>
               Skaityti daugiau
-            </button>
+            </div>
           </div>
           <div className="text-box">
             <h1>About project:</h1>
@@ -61,9 +61,9 @@ export class WebsiteInfo extends Component {
               Accusamus aliquid saepe harum ipsam, odit reprehenderit quidem adipisci, praesentium molestias illum facere iste sit! Itaque,
               amet?
             </p>
-            <button className="btn btn-read-more" onClick={this.readMoreEnClicked}>
+            <div className="btn btn-read-more" onClick={this.readMoreEnClicked}>
               Read more
-            </button>
+            </div>
           </div>
         </div>
       </div>

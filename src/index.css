@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 *,
 *::before,
 *::after {
@@ -26,6 +27,7 @@ ul li {
   --global-color-grey-light: rgb(165, 165, 165);
   --global-color-grey-dark: rgb(84, 91, 94);
   --global-padding-left-right: 15rem;
+  --website-info-column-width: 46%;
   --btn-color-blue: rgb(0, 140, 255);
   --btn-color-orange: rgb(255, 187, 0);
   --btn-color-green: rgb(98, 202, 0);
@@ -55,8 +57,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Courier New", sans-serif;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Spectral", serif;
   height: 100%;
   width: 100%;
   background-color: var(--global-color-background);
@@ -111,7 +112,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  width: 80vw;
+  width: 1200px;
   height: 100%;
   padding: 6rem 0;
 }
@@ -130,17 +131,19 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
   position: fixed;
   z-index: 6;
   top: 6rem;
-  left: 0;
+  left: 50%;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  width: 100%;
+  width: 1200px;
   height: 0;
 }
 
@@ -161,7 +164,6 @@ body {
   position: relative;
   width: 4rem;
   height: 4rem;
-  margin-right: 8rem;
 }
 
 .header .btn-audio .icon {
@@ -211,7 +213,6 @@ body {
   min-height: 38rem;
   width: 100%;
   z-index: 2;
-  margin-bottom: 10rem;
 }
 
 .website-info .website-info-top {
@@ -237,14 +238,16 @@ body {
 }
 
 .website-info .website-info-top h1 {
-  font-size: 3rem;
+  width: var(--website-info-column-width);
+  font-size: 4rem;
+  line-height: 4rem;
+  font-weight: 700;
   text-align: right;
   word-spacing: 9999999px;
-  width: 48%;
 }
 
 .website-info .website-info-top .map-image {
-  width: 48%;
+  width: var(--website-info-column-width);
   height: 14rem;
   background-image: url("./images/Map small-01.png");
   background-size: contain;
@@ -292,7 +295,7 @@ body {
           align-items: center;
   -ms-flex-direction: column;
       flex-direction: column;
-  width: 48%;
+  width: var(--website-info-column-width);
   background-color: var(--global-color-background);
 }
 
@@ -364,6 +367,8 @@ body {
   position: relative;
   width: 63vw;
   height: 70vw;
+  width: 945px;
+  height: 1042px;
 }
 
 .interactive-map-section .map-container .map-images-container .main-map-image {
@@ -448,7 +453,7 @@ body {
   border-radius: 3rem;
   padding: 3px;
   margin-bottom: 1rem;
-  width: 16rem;
+  width: 17rem;
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;
 }
@@ -465,6 +470,7 @@ body {
 }
 
 .categories .buttons-container .btn p {
+  font-size: 1.3rem;
   margin-bottom: 0.3rem;
 }
 
@@ -489,6 +495,18 @@ body {
 }
 
 .categories .buttons-container .btn:nth-child(3):hover {
+  border: 2px solid #dec44e;
+}
+
+.categories .buttons-container .btn-border-history {
+  border: 2px solid #99b5cc;
+}
+
+.categories .buttons-container .btn-border-legends {
+  border: 2px solid #fed146;
+}
+
+.categories .buttons-container .btn-border-present {
   border: 2px solid #dec44e;
 }
 
@@ -531,13 +549,68 @@ body {
 }
 
 .map-icons-container .btn .logo {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
   background-size: 100% 100%;
   background-position: center;
-  -webkit-transition: 0.5s all ease;
-  transition: 0.5s all ease;
-  cursor: pointer;
+  -webkit-transition: 0.2s all ease;
+  transition: 0.2s all ease;
   height: 11vw;
   width: 11vw;
+  height: 150px;
+  width: 150px;
+  opacity: 0;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  pointer-events: none;
+}
+
+.map-icons-container .btn .logo-animation {
+  -webkit-animation-name: logo-clicked-animation;
+          animation-name: logo-clicked-animation;
+}
+
+@-webkit-keyframes logo-clicked-animation {
+  0% {
+    height: 150px;
+    width: 150px;
+  }
+  50% {
+    height: 170px;
+    width: 170px;
+  }
+  100% {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@keyframes logo-clicked-animation {
+  0% {
+    height: 150px;
+    width: 150px;
+  }
+  50% {
+    height: 170px;
+    width: 170px;
+  }
+  100% {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+.map-icons-container .btn .logo-innactive {
+  opacity: 1;
 }
 
 .map-icons-container .btn .logo-scale-animation {
@@ -551,26 +624,10 @@ body {
   left: 24%;
 }
 
-.map-icons-container .btn-history:nth-child(1) .logo {
-  background-image: url("./images/seduvos istorija - icon 2-1-01.png");
-}
-
-.map-icons-container .btn-history:nth-child(1):hover .logo {
-  background-image: url("./images/seduvos istorija - icon 2-3-01.png");
-}
-
 .map-icons-container .btn-history:nth-child(2) {
   z-index: 1;
   top: 54%;
   left: 31%;
-}
-
-.map-icons-container .btn-history:nth-child(2) .logo {
-  background-image: url("./images/seduvos istorija - icon 1-1-01.png");
-}
-
-.map-icons-container .btn-history:nth-child(2):hover .logo {
-  background-image: url("./images/seduvos istorija - icon 1-3-01.png");
 }
 
 .map-icons-container .btn-legends:nth-child(3) {
@@ -578,25 +635,9 @@ body {
   left: 26%;
 }
 
-.map-icons-container .btn-legends:nth-child(3) .logo {
-  background-image: url("./images/seduvos legendos 1-1-01.png");
-}
-
-.map-icons-container .btn-legends:nth-child(3):hover .logo {
-  background-image: url("./images/seduvos legendos 1-3-01.png");
-}
-
 .map-icons-container .btn-legends:nth-child(4) {
   top: 55%;
   left: 4%;
-}
-
-.map-icons-container .btn-legends:nth-child(4) .logo {
-  background-image: url("./images/seduvos legendos 2-1-01.png");
-}
-
-.map-icons-container .btn-legends:nth-child(4):hover .logo {
-  background-image: url("./images/seduvos legendos 2-3-01.png");
 }
 
 .map-icons-container .btn-legends:nth-child(5) {
@@ -604,25 +645,9 @@ body {
   left: 41%;
 }
 
-.map-icons-container .btn-legends:nth-child(5) .logo {
-  background-image: url("./images/seduvos legendos 3-1-01.png");
-}
-
-.map-icons-container .btn-legends:nth-child(5):hover .logo {
-  background-image: url("./images/seduvos legendos 3-3-01.png");
-}
-
 .map-icons-container .btn-legends:nth-child(6) {
   top: 76%;
   left: 13%;
-}
-
-.map-icons-container .btn-legends:nth-child(6) .logo {
-  background-image: url("./images/seduvos legendos 4-1-01.png");
-}
-
-.map-icons-container .btn-legends:nth-child(6):hover .logo {
-  background-image: url("./images/seduvos legendos 4-3-01.png");
 }
 
 .map-icons-container .btn-legends:nth-child(7) {
@@ -630,25 +655,10 @@ body {
   left: 59%;
 }
 
-.map-icons-container .btn-legends:nth-child(7) .logo {
-  background-image: url("./images/seduvos legendos 5-1-01.png");
-}
-
-.map-icons-container .btn-legends:nth-child(7):hover .logo {
-  background-image: url("./images/seduvos legendos 5-3-01.png");
-}
-
 .map-icons-container .btn-legends:nth-child(8) {
-  top: 84%;
+  z-index: 6;
+  top: 83%;
   left: 76%;
-}
-
-.map-icons-container .btn-legends:nth-child(8) .logo {
-  background-image: url("./images/seduvos legendos 6-1-01.png");
-}
-
-.map-icons-container .btn-legends:nth-child(8):hover .logo {
-  background-image: url("./images/seduvos legendos 6-3-01.png");
 }
 
 .map-icons-container .btn-legends:nth-child(9) {
@@ -656,64 +666,28 @@ body {
   left: 88%;
 }
 
-.map-icons-container .btn-legends:nth-child(9) .logo {
-  background-image: url("./images/seduvos legendos 7-1-01.png");
-}
-
-.map-icons-container .btn-legends:nth-child(9):hover .logo {
-  background-image: url("./images/seduvos legendos 7-3-01.png");
-}
-
 .map-icons-container .btn-present:nth-child(10) {
   top: 24%;
   left: 8%;
 }
 
-.map-icons-container .btn-present:nth-child(10) .logo {
-  background-image: url("./images/seduva dabar 1-1-01.png");
-}
-
-.map-icons-container .btn-present:nth-child(10):hover .logo {
-  background-image: url("./images/seduva dabar 1-3-01.png");
-}
-
 .map-icons-container .btn-present:nth-child(11) {
   top: 34%;
   left: 29%;
-}
-
-.map-icons-container .btn-present:nth-child(11) .logo {
-  background-image: url("./images/seduva dabar 2-1-01.png");
-}
-
-.map-icons-container .btn-present:nth-child(11):hover .logo {
-  background-image: url("./images/seduva dabar 2-3-01.png");
+  z-index: 5;
 }
 
 .map-icons-container .btn-present:nth-child(12) {
+  z-index: 0;
   top: 34%;
   left: 46%;
-}
-
-.map-icons-container .btn-present:nth-child(12) .logo {
-  background-image: url("./images/seduva dabar 3-1-01.png");
-}
-
-.map-icons-container .btn-present:nth-child(12):hover .logo {
-  background-image: url("./images/seduva dabar 3-3-01.png");
+  z-index: 5;
 }
 
 .map-icons-container .btn-present:nth-child(13) {
+  z-index: 3;
   top: 45%;
   left: 36%;
-}
-
-.map-icons-container .btn-present:nth-child(13) .logo {
-  background-image: url("./images/seduva dabar 4-1-01.png");
-}
-
-.map-icons-container .btn-present:nth-child(13):hover .logo {
-  background-image: url("./images/seduva dabar 4-3-01.png");
 }
 
 .map-icons-container .btn-present:nth-child(14) {
@@ -721,25 +695,9 @@ body {
   left: 50%;
 }
 
-.map-icons-container .btn-present:nth-child(14) .logo {
-  background-image: url("./images/seduva dabar 5-1-01.png");
-}
-
-.map-icons-container .btn-present:nth-child(14):hover .logo {
-  background-image: url("./images/seduva dabar 5-3-01.png");
-}
-
 .map-icons-container .btn-present:nth-child(15) {
   top: 63%;
   left: 57%;
-}
-
-.map-icons-container .btn-present:nth-child(15) .logo {
-  background-image: url("./images/seduva dabar 6-1-01.png");
-}
-
-.map-icons-container .btn-present:nth-child(15):hover .logo {
-  background-image: url("./images/seduva dabar 6-3-01.png");
 }
 
 .map-icons-container .btn-present:nth-child(16) {
@@ -747,28 +705,15 @@ body {
   left: 37%;
 }
 
-.map-icons-container .btn-present:nth-child(16) .logo {
-  background-image: url("./images/seduva dabar 7-1-01.png");
-}
-
-.map-icons-container .btn-present:nth-child(16):hover .logo {
-  background-image: url("./images/seduva dabar 7-3-01.png");
-}
-
 .map-icons-container .btn-present:nth-child(17) {
+  z-index: 2;
   top: 89%;
   left: 73%;
 }
 
-.map-icons-container .btn-present:nth-child(17) .logo {
-  background-image: url("./images/seduva dabar 8-1-01.png");
-}
-
-.map-icons-container .btn-present:nth-child(17):hover .logo {
-  background-image: url("./images/seduva dabar 8-3-01.png");
-}
-
 .modal-window-container {
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
   position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -784,10 +729,10 @@ body {
       -ms-flex-align: center;
           align-items: center;
   top: 0;
+  left: 50%;
   width: 100%;
   height: 100%;
   z-index: 3;
-  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .modal-window-container .content {
@@ -796,10 +741,21 @@ body {
 }
 
 .modal-window-container .window-content {
-  width: 40%;
+  width: 1000px;
   height: auto;
   -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+.modal-window-container .window-content .btn-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  height: 4rem;
+  width: 4rem;
+  background-position: center;
+  background-size: cover;
+  background-image: url("./images/icon - close-01.png");
 }
 
 .modal-window-container .window-content .content-top {
@@ -818,8 +774,10 @@ body {
           align-items: center;
   position: relative;
   width: 100%;
-  padding: 0 5rem;
-  background-color: #8fcccc;
+  padding: 0 6rem;
+  padding-top: 4rem;
+  padding-bottom: 0;
+  background-color: #fee667;
 }
 
 .modal-window-container .window-content .content-top .media-screen {
@@ -841,7 +799,6 @@ body {
   height: 20rem;
   background-color: black;
   color: white;
-  margin-top: 4rem;
 }
 
 .modal-window-container .window-content .content-top .media-screen .video-container {
@@ -877,11 +834,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-image: url("./images/icon - legendos video-01.png");
   width: 9rem;
   height: 9rem;
-  border-radius: 5rem;
-  color: black;
-  background-color: #8fcccc;
   cursor: pointer;
   z-index: 2;
 }
@@ -894,28 +851,6 @@ body {
 
 .modal-window-container .window-content .content-top .media-screen .btn-pause:hover {
   opacity: 1;
-}
-
-.modal-window-container .window-content .content-top .btn-close {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 3rem;
-  height: 3rem;
-  background-color: white;
 }
 
 .modal-window-container .window-content .content-bottom {
@@ -951,11 +886,11 @@ body {
 }
 
 .window-audio .window-content .content-top {
-  background-color: #fee667;
+  background-color: #a7b9c7;
 }
 
 .window-audio .window-content .content-top .media-screen .btn-play {
-  background-color: #fee667;
+  background-image: url("./images/icon - audio-01.png");
 }
 
 .window-gallery {
@@ -1026,10 +961,18 @@ body {
 
 .window-gallery .window-content .content-top .media-screen .buttons .btn-gallery {
   position: relative;
-  color: black;
-  width: 6rem;
-  padding: 0.5rem 0;
-  background-color: white;
+  height: 4rem;
+  width: 4rem;
+  background-position: center;
+  background-size: cover;
+}
+
+.window-gallery .window-content .content-top .media-screen .buttons .btn-previous {
+  background-image: url("./images/icon - back-1-01.png");
+}
+
+.window-gallery .window-content .content-top .media-screen .buttons .btn-next {
+  background-image: url("./images/icon - forward-01.png");
 }
 
 .window-gallery .window-content .content-top .media-screen .image-container {
@@ -1239,28 +1182,6 @@ body {
 
 .window-virtual-reality .window-content {
   position: relative;
-  height: 90%;
-  width: 90%;
-  padding: 0;
-}
-
-.window-virtual-reality .window-content .content-top {
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
-  top: 0;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  z-index: 1;
-}
-
-.window-virtual-reality .window-content .content-bottom {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1274,48 +1195,37 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.window-virtual-reality .window-content .content-bottom .vr-video-container {
-  width: 100%;
-  height: 100%;
-  background-image: url("./images/virtual_reality_video.jpg");
-  background-position: center;
-  background-size: cover;
-}
-
-.window-virtual-reality .window-content .content-bottom .btn-container {
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.window-virtual-reality .window-content .content-bottom .btn-container .btn {
-  font-size: 3rem;
-  background-color: #414141;
+  -ms-flex-direction: column;
+      flex-direction: column;
   color: white;
-  border: 1px solid white;
-  padding: 1rem 2rem;
-  border-radius: 1rem;
+  width: 35rem;
+  height: 20rem;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.window-virtual-reality .window-content p {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.window-virtual-reality .window-content .btn-confirm-vr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5rem;
+  background-color: #dac14c;
+  width: 10rem;
+  height: 3rem;
 }
 /*# sourceMappingURL=index.css.map */
