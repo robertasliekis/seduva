@@ -42,23 +42,23 @@ const iconNames = [
 ];
 
 const iconInnactiveUrl = [
-  "../images/seduvos istorija - icon 1-1-01.png",
-  "../images/seduvos istorija - icon 2-1-01.png",
-  "../images/seduvos legendos 1-1-01.png",
-  "../images/seduvos legendos 2-1-01.png",
-  "../images/seduvos legendos 3-1-01.png",
-  "../images/seduvos legendos 4-1-01.png",
-  "../images/seduvos legendos 5-1-01.png",
-  "../images/seduvos legendos 6-1-01.png",
-  "../images/seduvos legendos 7-1-01.png",
-  "../images/seduva dabar 1-1-01.png",
-  "../images/seduva dabar 2-1-01.png",
-  "../images/seduva dabar 3-1-01.png",
-  "../images/seduva dabar 4-1-01.png",
-  "../images/seduva dabar 5-1-01.png",
-  "../images/seduva dabar 6-1-01.png",
-  "../images/seduva dabar 7-1-01.png",
-  "../images/seduva dabar 8-1-01.png"
+  "./images/seduvos istorija - icon 1-1-01.png",
+  "./images/seduvos istorija - icon 2-1-01.png",
+  "./images/seduvos legendos 1-1-01.png",
+  "./images/seduvos legendos 2-1-01.png",
+  "./images/seduvos legendos 3-1-01.png",
+  "./images/seduvos legendos 4-1-01.png",
+  "./images/seduvos legendos 5-1-01.png",
+  "./images/seduvos legendos 6-1-01.png",
+  "./images/seduvos legendos 7-1-01.png",
+  "./images/seduva dabar 1-1-01.png",
+  "./images/seduva dabar 2-1-01.png",
+  "./images/seduva dabar 3-1-01.png",
+  "./images/seduva dabar 4-1-01.png",
+  "./images/seduva dabar 5-1-01.png",
+  "./images/seduva dabar 6-1-01.png",
+  "./images/seduva dabar 7-1-01.png",
+  "./images/seduva dabar 8-1-01.png"
 ];
 
 const iconHoveredUrl = [
