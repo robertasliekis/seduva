@@ -195,10 +195,10 @@ body {
         border: none;
         outline: none;
       }
-      .btn:hover {
-        background-color: black;
-        color: white;
-      }
+      // .btn:hover {
+      //   background-color: black;
+      //   color: white;
+      // }
     }
     .text-box:nth-child(2) {
       margin-top: 6rem;
@@ -225,7 +225,7 @@ body {
       .main-map-image {
         width: 100%;
         height: 100%;
-        background-image: url("./images/Map-01.png");
+        background-image: url("./images/Map (no shadows)-01.png");
         background-position: center;
         background-size: 100% 100%;
         background-repeat: no-repeat;
@@ -315,16 +315,22 @@ body {
   .btn {
     @include displayFlexColumn();
     @include positionAbsoluteCenter();
-    transform: translate(-50%, -95%);
+    transform: translate(-50%, -100%);
+    height: 175px;
+    width: 150px;
     top: 100%;
     transition: 0.5s all ease;
-    // border: 1px solid red;
+    //border: 1px solid yellow;
+    overflow: hidden;
+    pointer-events: none;
     .logo {
-      @include positionAbsoluteCenter();
-      transform: translate(-50%, -100%);
+      position: absolute;
+      transform: translate(-50%, -86%);
+      left: 50%;
+      top: 86%;
       background-size: 100% 100%;
       background-position: center;
-      transition: 0.2s all ease;
+      transition: 0.4s all ease;
       height: 11vw;
       width: 11vw;
       height: 150px;
@@ -333,7 +339,9 @@ body {
       animation-duration: 1s;
       animation-fill-mode: forwards;
       animation-iteration-count: infinite;
+      animation-delay: 0.2s;
       pointer-events: none;
+      // border: 1px solid red;
     }
 
     .logo-animation {
@@ -365,16 +373,31 @@ body {
 
   //History icons----------------------------------------------------------
   .btn-history:nth-child(1) {
+    height: 110px;
     z-index: 2;
-    top: 45%;
-    left: 24%;
+    top: 46%;
+    left: 23%;
+    .logo {
+      top: 80%;
+    }
   }
   .btn-history:nth-child(2) {
+    height: 120px;
     z-index: 1;
-    top: 54%;
+    top: 58%;
     left: 31%;
+    .logo {
+      top: 80%;
+    }
   }
   //Legends icons------------------------------------------------------------
+  .btn-legends {
+    width: 110px;
+    height: 110px;
+    .logo {
+      top: 77%;
+    }
+  }
   .btn-legends:nth-child(3) {
     top: 19%;
     left: 26%;
@@ -412,7 +435,7 @@ body {
 
   //Present icons---------------------------------------------------------
   .btn-present:nth-child(10) {
-    top: 24%;
+    top: 22%;
     left: 8%;
   }
 
@@ -424,36 +447,56 @@ body {
 
   .btn-present:nth-child(12) {
     z-index: 0;
+    height: 100px;
     top: 34%;
     left: 46%;
     z-index: 5;
+    .logo {
+      top: 81%;
+    }
   }
 
   .btn-present:nth-child(13) {
     z-index: 3;
     top: 45%;
     left: 36%;
+    width: 100px;
+    height: 150px;
   }
 
   .btn-present:nth-child(14) {
-    top: 42%;
+    height: 100px;
+    top: 44%;
     left: 50%;
+    .logo {
+      top: 80%;
+    }
   }
 
   .btn-present:nth-child(15) {
-    top: 63%;
+    height: 100px;
+    top: 64%;
     left: 57%;
+    .logo {
+      top: 75%;
+    }
   }
 
   .btn-present:nth-child(16) {
     top: 78%;
     left: 37%;
+    width: 160px;
+    height: 140px;
   }
 
   .btn-present:nth-child(17) {
     z-index: 2;
-    top: 89%;
+    top: 91%;
     left: 73%;
+    height: 100px;
+    .logo {
+      top: 79%;
+    }
   }
 }
 
@@ -525,6 +568,7 @@ body {
         .btn-pause {
           opacity: 0;
           transition: 0.5s all ease;
+          background-image: url("./images/Pause - 2-01.png");
         }
         .btn-pause:hover {
           opacity: 1;
@@ -554,6 +598,9 @@ body {
       .media-screen {
         .btn-play {
           background-image: url("./images/icon - audio-01.png");
+        }
+        .btn-pause {
+          background-image: url("./images/Pause - 1-01.png");
         }
       }
     }

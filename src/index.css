@@ -326,11 +326,6 @@ body {
   outline: none;
 }
 
-.website-info .text-boxes-container .text-box .btn:hover {
-  background-color: black;
-  color: white;
-}
-
 .website-info .text-boxes-container .text-box:nth-child(2) {
   margin-top: 6rem;
 }
@@ -374,7 +369,7 @@ body {
 .interactive-map-section .map-container .map-images-container .main-map-image {
   width: 100%;
   height: 100%;
-  background-image: url("./images/Map-01.png");
+  background-image: url("./images/Map (no shadows)-01.png");
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -541,25 +536,27 @@ body {
           transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -95%);
-          transform: translate(-50%, -95%);
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  height: 175px;
+  width: 150px;
   top: 100%;
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .map-icons-container .btn .logo {
   position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 50%;
+  -webkit-transform: translate(-50%, -86%);
+          transform: translate(-50%, -86%);
   left: 50%;
-  -webkit-transform: translate(-50%, -100%);
-          transform: translate(-50%, -100%);
+  top: 86%;
   background-size: 100% 100%;
   background-position: center;
-  -webkit-transition: 0.2s all ease;
-  transition: 0.2s all ease;
+  -webkit-transition: 0.4s all ease;
+  transition: 0.4s all ease;
   height: 11vw;
   width: 11vw;
   height: 150px;
@@ -571,6 +568,8 @@ body {
           animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
   pointer-events: none;
 }
 
@@ -619,15 +618,34 @@ body {
 }
 
 .map-icons-container .btn-history:nth-child(1) {
+  height: 110px;
   z-index: 2;
-  top: 45%;
-  left: 24%;
+  top: 46%;
+  left: 23%;
+}
+
+.map-icons-container .btn-history:nth-child(1) .logo {
+  top: 80%;
 }
 
 .map-icons-container .btn-history:nth-child(2) {
+  height: 120px;
   z-index: 1;
-  top: 54%;
+  top: 58%;
   left: 31%;
+}
+
+.map-icons-container .btn-history:nth-child(2) .logo {
+  top: 80%;
+}
+
+.map-icons-container .btn-legends {
+  width: 110px;
+  height: 110px;
+}
+
+.map-icons-container .btn-legends .logo {
+  top: 77%;
 }
 
 .map-icons-container .btn-legends:nth-child(3) {
@@ -667,7 +685,7 @@ body {
 }
 
 .map-icons-container .btn-present:nth-child(10) {
-  top: 24%;
+  top: 22%;
   left: 8%;
 }
 
@@ -679,36 +697,60 @@ body {
 
 .map-icons-container .btn-present:nth-child(12) {
   z-index: 0;
+  height: 100px;
   top: 34%;
   left: 46%;
   z-index: 5;
+}
+
+.map-icons-container .btn-present:nth-child(12) .logo {
+  top: 81%;
 }
 
 .map-icons-container .btn-present:nth-child(13) {
   z-index: 3;
   top: 45%;
   left: 36%;
+  width: 100px;
+  height: 150px;
 }
 
 .map-icons-container .btn-present:nth-child(14) {
-  top: 42%;
+  height: 100px;
+  top: 44%;
   left: 50%;
 }
 
+.map-icons-container .btn-present:nth-child(14) .logo {
+  top: 80%;
+}
+
 .map-icons-container .btn-present:nth-child(15) {
-  top: 63%;
+  height: 100px;
+  top: 64%;
   left: 57%;
+}
+
+.map-icons-container .btn-present:nth-child(15) .logo {
+  top: 75%;
 }
 
 .map-icons-container .btn-present:nth-child(16) {
   top: 78%;
   left: 37%;
+  width: 160px;
+  height: 140px;
 }
 
 .map-icons-container .btn-present:nth-child(17) {
   z-index: 2;
-  top: 89%;
+  top: 91%;
   left: 73%;
+  height: 100px;
+}
+
+.map-icons-container .btn-present:nth-child(17) .logo {
+  top: 79%;
 }
 
 .modal-window-container {
@@ -847,6 +889,7 @@ body {
   opacity: 0;
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;
+  background-image: url("./images/Pause - 2-01.png");
 }
 
 .modal-window-container .window-content .content-top .media-screen .btn-pause:hover {
@@ -891,6 +934,10 @@ body {
 
 .window-audio .window-content .content-top .media-screen .btn-play {
   background-image: url("./images/icon - audio-01.png");
+}
+
+.window-audio .window-content .content-top .media-screen .btn-pause {
+  background-image: url("./images/Pause - 1-01.png");
 }
 
 .window-gallery {

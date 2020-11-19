@@ -47,7 +47,7 @@ export class WebsiteInfo extends Component {
               amet?
             </p>
             <div className="btn btn-read-more" onClick={this.readMoreLtClicked}>
-              Skaityti daugiau
+              {this.state.readMoreLtClicked ? "Skaityti mažiau" : "Skaityti daugiau"}
             </div>
           </div>
           <div className="text-box">
@@ -62,7 +62,7 @@ export class WebsiteInfo extends Component {
               amet?
             </p>
             <div className="btn btn-read-more" onClick={this.readMoreEnClicked}>
-              Read more
+              {this.state.readMoreEnClicked ? "Read less" : "Read more"}
             </div>
           </div>
         </div>

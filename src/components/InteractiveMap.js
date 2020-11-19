@@ -247,7 +247,7 @@ export class InteractiveMap extends Component {
   };
 
   btnVRConfirmClicked = () => {
-    this.setState({ confirmVROpen: true });
+    this.setState({ confirmVROpen: true, containerType: "" });
   };
 
   componentDidMount() {}
