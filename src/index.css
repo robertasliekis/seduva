@@ -235,25 +235,36 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  width: 100%;
 }
 
-.website-info .website-info-top h1 {
+.website-info .website-info-top .text-box {
   width: var(--website-info-column-width);
-  font-size: 4rem;
   line-height: 4rem;
   font-weight: 700;
   text-align: right;
-  word-spacing: 9999999px;
+}
+
+.website-info .website-info-top .text-box h1 {
+  font-weight: 700;
+  text-align: center;
+}
+
+.website-info .website-info-top .text-box h1:nth-child(1) {
+  font-size: 3rem;
+}
+
+.website-info .website-info-top .text-box h1:nth-child(2) {
+  font-size: 4.7rem;
 }
 
 .website-info .website-info-top .map-image {
   width: var(--website-info-column-width);
   height: 14rem;
-  background-image: url("./images/Map small-01.png");
+  background-image: url("./images/lelija gera png.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: left;
-  margin-top: 3rem;
+  background-position: center;
 }
 
 .website-info .text-boxes-container {
@@ -449,15 +460,15 @@ body {
   border: 2px solid transparent;
   border-radius: 3rem;
   padding: 3px;
-  margin-bottom: 1rem;
+  margin-bottom: 5px;
   width: 17rem;
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;
 }
 
 .categories .buttons-container .btn .circle {
-  height: 4rem;
-  width: 4rem;
+  height: 70px;
+  width: 70px;
   background-position: center;
   background-size: cover;
   -webkit-transition: 0.5s all ease;

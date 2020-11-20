@@ -31,7 +31,10 @@ export class WebsiteInfo extends Component {
         }
       >
         <div className="website-info-top">
-          <h1>Šeduva: kelionė laiku</h1>
+          <div className="text-box">
+            <h1>Virtualus Šeduvos turas:</h1>
+            <h1>„Kelionė laiku“</h1>
+          </div>
           <div className="map-image"></div>
         </div>
         <div className="text-boxes-container">
