@@ -10,8 +10,16 @@ import { mouseEnterMap, setScrollPosition } from "../actions";
 
 // const imageArray = [image1Url, image2Url, image3Url, image4Url];
 
-import videoAbout from "../video/video.mp4";
-import audioAbout from "../audio/about.mp3";
+import videoAbout1 from "../video/video1.mp4";
+import videoAbout2 from "../video/video1.mp4";
+import videoAbout3 from "../video/video1.mp4";
+import videoAbout4 from "../video/video1.mp4";
+import videoAbout5 from "../video/video1.mp4";
+import videoAbout6 from "../video/video1.mp4";
+import videoAbout7 from "../video/video1.mp4";
+import audioAbout from "../audio/baba-about.mp3";
+
+const videoAboutArray = [videoAbout1, videoAbout2, videoAbout3, videoAbout4, videoAbout5, videoAbout6, videoAbout7];
 
 const imageNumbers = [1, 2, 3, 4, 5];
 
@@ -31,14 +39,14 @@ const iconNames = [
   ["legends", "video"],
   ["legends", "video"],
   ["legends", "video"],
-  ["present", "vr"],
-  ["present", "vr"],
-  ["present", "vr"],
-  ["present", "vr"],
-  ["present", "vr"],
-  ["present", "vr"],
-  ["present", "vr"],
-  ["present", "vr"]
+  ["present", "virtual-reality"],
+  ["present", "virtual-reality"],
+  ["present", "virtual-reality"],
+  ["present", "virtual-reality"],
+  ["present", "virtual-reality"],
+  ["present", "virtual-reality"],
+  ["present", "virtual-reality"],
+  ["present", "virtual-reality"]
 ];
 
 const iconInnactiveUrl = [
@@ -101,6 +109,76 @@ const iconClickedUrl = [
   "./images/seduva dabar 8-3-01.png"
 ];
 
+const modalWindowText = [
+  [
+    "Šeduvos baba",
+    "Etnografė, Lietuvos šviesuolė Emilija Brajinskienė, dar vadinama Šeduvos Baba, gimė 1930 m. Ji yra surinkusi visą lietuvių liaudies kūrybos lobyną, kuriame yra dainuojamoji tautosaka (dainos, raudos) ir sakytinė tautosaka (pasakos, sakmės, padavimai, nutikimai, mįslės, minklės, patarlės, priežodžiai, burtai, oracijos ir kt.). Emilija yra puiki pasakotoja,turinti fenomenalią atmintį ir kalbanti šeduvių tarme."
+  ],
+  [
+    "Daugyvenės kultūros istorijos muziejus",
+    `1884 m. statytame Bencelio Blocho name, esančiame Vėriškių gatvėje, kadaise veikė odų perdirbimo įmonė. 1958 metais čia buvo įkurtas Šeduvos kraštotyros muziejus, pradžioje veikęs visuomeniniais pagrindais. 1959–1998 m. Šeduvos kraštotyros muziejaus vedėju buvo kraštotyrininkas, muziejininkas Vytautas Šenauskas (1929–2007).
+    Atgimimo metais Šeduvos muziejus tapo Daugyvenės kultūros istorijos muziejaus - draustinio Šeduvos kraštotyros skyriumi. Jam ir toliau vadovavo Vytautas Šenauskas. Muziejaus ekspozicijoje buvo rodomi archeologiniai radiniai, liaudies meno meistrų darbai, nuotraukos, archyviniai dokumentai, pinigų, medalių ir ordinų kolekcijos, kiti vertingi eksponatai. Vertingi kunigaikščių Giedraičių paveikslai, bei 1994 m. dailininko Boleslovo Plungės padovanoti tapybos darbai - paveikslų kolekcija. 
+    Šiuo metu visi muziejaus eksponatai saugomi Daugyvenės kultūros istorijos muziejaus - draustinio saugyklose.`
+  ],
+  [
+    "1. Legenda „Malūnas“. Kodėl malūno sparnai sukasi be vėjo?",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
+  ],
+  [
+    "2. Legenda „Velnias ne Boba“.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
+  ],
+  [
+    "3. Šeduvos ir Niauduvos vardų kilmė.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
+  ],
+  [
+    "4. Legenda „Švento Petro rakteliai“. Kodėl raktažolė dar vadinama Šv. Petro rakteliais?",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
+  ],
+  [
+    "5. Legenda „Kirkibala“ apie velnio monus.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
+  ],
+  [
+    "6. Legenda „Vakoniškio laumės“.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
+  ],
+  [
+    "7. Legenda „Šniūrgalis“ apie užkeiktą lobį.",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
+  ],
+  [
+    "Šeduvos malūnas",
+    `Šeduvos malūno pradžia – 1905-ieji metai. Tada jis buvo pradėtas statyti. Tarsi kažkokio užkeikimo persekiojimas, malūnas, dar nebaigtas statyti, užsidegė, buvo smarkiai apgriautas. Tačiau malūnas niekada nebuvo užmirštas – tarybiniais (1967 aisiais) metais jis tapo pasilinksminimų vieta – žmonės į jį plaukdavo kaip į atlaidus. Keletą metų malūnas buvo apleistas, paliktas likimo valiai.
+    Tačiau 2000-aisiais metais tarsi iš naujo atgimė. Malūnas vėl gyvas ir puikuojasi, modamas sparnais atvykstantiems į Šeduvą!
+`
+  ],
+  [
+    "Šeduvos Šv. Kryžiaus Atradimo bažnyčia",
+    `Tai – seniausias Šeduvos kultūros paveldo objektas ir vienas iš vertingiausių Lietuvos sakralinės architektūros kūrinių. Bažnyčia pastatyta XVII a. vid. Renesansinė, turi baroko bruožų, kryžminio plano, su pusapskrite apside, žemomis zakristijomis, dvibokštė. Vidus – halinis, 3 navų, yra 5 altoriai. Skliautai cilindriniai. Šventoriaus tvora – akmenų mūro.`
+  ],
+  [
+    "Užvažiuojamieji namai – karčema. Aikštė",
+    `Nuo 18 a. antros pusės prie Šeduvos Laisvės aikštės šliejosi dideli, įdomūs savo architektūra ir planavimu pirklių ir šiaip pakeleivių nakvynės namai su arklidėmis (Užvažiuojamieji namai). XVIII a. aikštės pakrašty stovinčiame pastate buvo galima pailsėti, pernakvoti ir pakeisti arklius. Pastate buvo įrengtos stadalos, skirtos keliautojų arkliams ir transporto priemonėms, kitam gale – patalpos keliautojams.
+    Per I-ąjį pasaulinį karą, 1915 m. pastatas sudegė. Buvo atstatyta tik gyvenamoji dalis ir gerokai pakeistas planas. Nakvynės namai neteko senosios architektūrinės išvaizdos.
+    Laisvės aikštėje 2007 m. pastatytas Šiaulių Prisikėlimo apygardos partizanams skirtas paminklas - SAKALAS. Paminklo autoriai: skulptorius Romanas Kazlauskas, architektai Arūnas Eduardas Paslaitis ir Viktorija Paslaitytė.`
+  ],
+  ["Stulpas paukstis", "tekstas"],
+  [
+    "Retromobiliai",
+    `Mobili istorinės, taip pat istorinės karinės technikos muziejaus „Retromobile“ ekspozicija, kuri bet kuriuo momentu gali pajudėti iš vietos. Šeduvos muziejaus ekspozicija - neįkainojama: kiekviena priemonė yra visiški originali iki pat variklio ir važiuoklės. Pats įspūdingiausias - aštuonių cilindrų galingasis amerikietiškasis „Kadilakas“, pagamintas dar 1929 metais. Tai - tikra legenda. Lankytojams siūloma pamatyti ne tik amerikietišką, bet ir vokišką, čekoslovakišką ir, žinoma, sovietinę techniką. Kiekvienas gali ne tik pasižvalgyti, bet ir išgirsti išsamų gido pasakojimą.
+    Kontaktai: el.p. info@retromobile.lt  tel. 868227122, 861737078, 868527479.`
+  ],
+  [
+    "Žydų kapinės",
+    `Kapinėse, esančiose Žvejų gatvės gale iki antrojo pasaulinio karo buvo laidojami mieste gyvenę žydai. Pirmasis laidojimas žymimas 1820 m. data.
+    2013 – 2018 m. Šeduvos žydų memorialinis fondas atliko kapinių restauracijos darbus, įvairius tyrinėjimo darbus, surado ir sužymėjo mirusiųjų palaidojimo vietas.
+    Šalia Šeduvos Žydų kapinių 2018 m. pradėtos analogų pasaulyje neturinčio projekto – moderniausiomis technologijomis paremto litvakų miestelių istorijos, kultūros bei atminimo muziejaus „Dingęs Štetlas“ („The Lost Shtetl“) statybos. Projekto fundatorius Šveicarijoje gyvenantis verslininkas Ivan Glasenberg gimęs Pietų Afrikoje, kurio seneliai kilę iš Šeduvos. Čia bus atkurtas kažkada vienos didžiausių Europoje žydų diasporos miestelių gyvenimas.`
+  ],
+  ["Pastatas", "Tekstas"],
+  ["Stotis", "Tekstas"]
+];
 export class InteractiveMap extends Component {
   constructor(props) {
     super(props);
@@ -109,12 +187,15 @@ export class InteractiveMap extends Component {
       categoryTypeClicked: "",
       categoryRef: "",
       containerType: "",
+      containerIndex: 0,
       galleryImageIndex: 0,
       confirmVROpen: false,
       mapZoomLevel: 1,
       scrollPosition: 0,
       mouseEnterMap: true,
-      mediaPlayState: false
+      mediaPlayState: false,
+      mediaRef: undefined,
+      videoIndex: 0
     };
     this.categoriesRefs = {};
     this.logoInnactiveRefs = {};
@@ -141,10 +222,6 @@ export class InteractiveMap extends Component {
       categoryTypeClicked: type,
       categoryRef: ref
     });
-  };
-
-  mouseEnterMapIcon = (ref) => {
-    console.log(ref);
   };
 
   mapZoomHandler = (event) => {
@@ -176,7 +253,6 @@ export class InteractiveMap extends Component {
     if (this.state.categoryTypeClicked !== prevState.categoryTypeClicked) {
       for (let i = 0; i < iconNames.length; i++) {
         this.logoClickedRefs[i].style.opacity = 0;
-        //  if (this.state.categoryTypeClicked !== "") {
         for (let i = 0; i < 3; i++) {
           this.categoriesRefs[i].classList.remove(`btn-border-${categoriesNames[i][1]}`);
         }
@@ -191,9 +267,6 @@ export class InteractiveMap extends Component {
           this.logoInnactiveRefs[i].style.opacity = 1;
           this.logoClickedRefs[i].style.opacity = 0;
           this.logoClickedRefs[i].style.pointerEvents = "none";
-          // this.state.categoryRef.classList.remove(`btn-border-history`);
-          // this.state.categoryRef.classList.remove(`btn-border-legends`);
-          //  this.state.categoryRef.classList.remove(`btn-border-present`);
         }
       }
     }
@@ -214,11 +287,16 @@ export class InteractiveMap extends Component {
     this.setState({ mapZoomLevel: 1 });
   };
 
-  openContainerClicked = (type) => {
+  openContainerClicked = (type, index) => {
     if (this.state.containerType === "") {
-      this.setState({ containerType: type });
+      this.setState({ containerType: type, containerIndex: index });
+      if (type === "audio") {
+        this.setState({ mediaRef: this.audioAboutRef });
+      } else if (type === "video") {
+        this.setState({ mediaRef: this.videoAboutRef, videoIndex: index - 2 });
+      }
     } else if (this.state.containerType !== "") {
-      this.setState({ containerType: "" });
+      this.setState({ containerType: "", containerIndex: 0 });
     }
     this.setState({ mediaPlayState: false });
     this.videoAboutRef.current.pause();
@@ -278,7 +356,7 @@ export class InteractiveMap extends Component {
                     ></div>
                     <div
                       onClick={() => {
-                        this.openContainerClicked(icon[1]);
+                        this.openContainerClicked(icon[1], index);
                       }}
                       ref={(ref) => {
                         this.logoClickedRefs[index] = ref;
@@ -323,58 +401,22 @@ export class InteractiveMap extends Component {
           </div>
         </div>
 
-        {/* Video container */}
-        <div className="modal-window-container window-video" style={{ display: this.state.containerType === "video" ? "flex" : "none" }}>
-          <div className="window-content">
+        {/* Modal window containers */}
+        <div
+          className={`modal-window-container window-${this.state.containerType}`}
+          style={{ display: this.state.containerType !== "" ? "flex" : "none" }}
+        >
+          <div className="window-content" style={{ display: this.state.containerType !== "virtual-reality" ? "flex" : "none" }}>
             <div className="content-top">
-              <div className="media-screen">
+              {/* Audio and video screens */}
+              <div
+                className="media-screen"
+                style={{ display: this.state.containerType === "audio" || this.state.containerType === "video" ? "flex" : "none" }}
+              >
                 <div className="video-container">
                   <video ref={this.videoAboutRef}>
-                    <source src={videoAbout} type="video/mp4" />
+                    <source src={videoAboutArray[this.state.videoIndex]} type="video/mp4" />
                   </video>
-                </div>
-                <div
-                  className="btn btn-play"
-                  onClick={() => {
-                    this.buttonPlayClickedHandler(this.videoAboutRef);
-                  }}
-                  style={{ display: this.state.mediaPlayState ? "none" : "flex" }}
-                ></div>
-                <div
-                  className="btn btn-play btn-pause"
-                  onClick={() => {
-                    this.buttonPlayClickedHandler(this.videoAboutRef);
-                  }}
-                  style={{ display: this.state.mediaPlayState ? "flex" : "none" }}
-                ></div>
-              </div>
-
-              <div
-                className="btn btn-close"
-                onClick={() => {
-                  this.openContainerClicked("video");
-                }}
-              ></div>
-            </div>
-            <div className="content-bottom">
-              <h1>Babos video</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam officiis veritatis perferendis dolores obcaecati. Modi
-                veniam, consequuntur nisi fuga, adipisci nam unde fugiat beatae sunt ipsam voluptatem vel saepe quo. Lorem ipsum dolor sit
-                amet, consectetur adipisicing elit. Ullam officiis veritatis perferendis dolores obcaecati. Modi veniam, consequuntur nisi
-                fuga, adipisci nam unde fugiat beatae sunt ipsam voluptatem vel saepe quo. Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Ullam officiis veritatis perferendis dolores obcaecati. Modi veniam, consequuntur nisi fuga, adipisci nam
-                unde fugiat beatae sunt ipsam voluptatem vel saepe quo.
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* Audio container */}
-        <div className="modal-window-container window-audio" style={{ display: this.state.containerType === "audio" ? "flex" : "none" }}>
-          <div className="window-content">
-            <div className="content-top">
-              <div className="media-screen">
-                <div className="video-container">
                   <audio ref={this.audioAboutRef}>
                     <source src={audioAbout} type="audio/mp3" />
                   </audio>
@@ -382,43 +424,20 @@ export class InteractiveMap extends Component {
                 <div
                   className="btn btn-play"
                   onClick={() => {
-                    this.buttonPlayClickedHandler(this.audioAboutRef);
+                    this.buttonPlayClickedHandler(this.state.mediaRef);
                   }}
                   style={{ display: this.state.mediaPlayState ? "none" : "flex" }}
                 ></div>
                 <div
                   className="btn btn-play btn-pause"
                   onClick={() => {
-                    this.buttonPlayClickedHandler(this.audioAboutRef);
+                    this.buttonPlayClickedHandler(this.state.mediaRef);
                   }}
                   style={{ display: this.state.mediaPlayState ? "flex" : "none" }}
                 ></div>
               </div>
-
-              <div className="btn btn-close" onClick={this.openContainerClicked}></div>
-            </div>
-            <div className="content-bottom">
-              <h1>Babos audio</h1>
-
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam officiis veritatis perferendis dolores obcaecati. Modi
-                veniam, consequuntur nisi fuga, adipisci nam unde fugiat beatae sunt ipsam voluptatem vel saepe quo. Lorem ipsum dolor sit
-                amet, consectetur adipisicing elit. Ullam officiis veritatis perferendis dolores obcaecati. Modi veniam, consequuntur nisi
-                fuga, adipisci nam unde fugiat beatae sunt ipsam voluptatem vel saepe quo. Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Ullam officiis veritatis perferendis dolores obcaecati. Modi veniam, consequuntur nisi fuga, adipisci nam
-                unde fugiat beatae sunt ipsam voluptatem vel saepe quo.
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* Gallery container */}
-        <div
-          className="modal-window-container window-gallery"
-          style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}
-        >
-          <div className="window-content">
-            <div className="content-top">
-              <div className="media-screen">
+              {/* Gallery media screen start*/}
+              <div className="media-screen" style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
                 <div className="buttons">
                   <div
                     className="btn btn-gallery btn-previous"
@@ -447,34 +466,33 @@ export class InteractiveMap extends Component {
                   </div>
                 </div>
               </div>
-              <div className="btn btn-close" onClick={this.openContainerClicked}></div>
+              {/* Gallery media screen end*/}
+              <div
+                className="btn btn-close"
+                onClick={() => {
+                  this.openContainerClicked(this.state.containerType);
+                }}
+              ></div>
             </div>
             <div className="content-bottom">
-              <div className={`image-container`}>
-                {imageNumbers.map((imageNumber, index) => {
-                  return (
-                    <div
-                      key={"image" + imageNumber}
-                      className="image"
-                      style={{ opacity: index === this.state.galleryImageIndex ? 1 : 0.5 }}
-                    ></div>
-                  );
-                })}
+              <div className="content-bottom-wrapper">
+                <div className="image-container" style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
+                  {imageNumbers.map((imageNumber, index) => {
+                    return (
+                      <div
+                        key={"image" + imageNumber}
+                        className="image"
+                        style={{ opacity: index === this.state.galleryImageIndex ? 1 : 0.5 }}
+                      ></div>
+                    );
+                  })}
+                </div>
+                <h1>{modalWindowText[this.state.containerIndex][0]}</h1>
+                <p>{modalWindowText[this.state.containerIndex][1]}</p>
               </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet sunt quae reprehenderit laudantium esse enim adipisci
-                molestias nemo perferendis? Hic iure corporis dignissimos? Temporibus dolor numquam possimus, tempore ea placeat? Iste amet
-                fuga mollitia blanditiis praesentium eveniet laudantium, culpa molestias quod laborum eligendi sit, aperiam maxime earum sed
-                aliquam tenetur?
-              </p>
             </div>
           </div>
-        </div>
-        <div
-          className="modal-window-container window-virtual-reality"
-          style={{ display: this.state.containerType === "vr" ? "flex" : "none" }}
-        >
-          <div className="window-content">
+          <div className="window-content" style={{ display: this.state.containerType === "virtual-reality" ? "flex" : "none" }}>
             <div className="btn btn-close" onClick={this.openContainerClicked}></div>
             <p>Jūs įeinate į 360° VRT</p>
             <div className="btn btn-confirm-vr" onClick={this.btnVRConfirmClicked}>
