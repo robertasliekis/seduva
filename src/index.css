@@ -339,6 +339,22 @@ body {
   outline: none;
 }
 
+.website-info .text-boxes-container .text-box-lt .text {
+  height: 9rem;
+}
+
+.website-info .text-boxes-container .text-box-en .text {
+  height: 10.5rem;
+}
+
+.website-info .text-boxes-container .text-box-lt-open .text {
+  height: 20rem;
+}
+
+.website-info .text-boxes-container .text-box-en-open .text {
+  height: 21.5rem;
+}
+
 .website-info .text-boxes-container .text-box:nth-child(2) {
   margin-top: 6rem;
 }
@@ -373,8 +389,6 @@ body {
 
 .interactive-map-section .map-container .map-images-container {
   position: relative;
-  width: 63vw;
-  height: 70vw;
   width: 945px;
   height: 1042px;
 }
@@ -494,18 +508,6 @@ body {
   background-image: url("./images/seduva dabar 1-01.png");
 }
 
-.categories .buttons-container .btn:nth-child(1):hover {
-  border: 2px solid #99b5cc;
-}
-
-.categories .buttons-container .btn:nth-child(2):hover {
-  border: 2px solid #fed146;
-}
-
-.categories .buttons-container .btn:nth-child(3):hover {
-  border: 2px solid #dec44e;
-}
-
 .categories .buttons-container .btn-border-history {
   border: 2px solid #99b5cc;
 }
@@ -570,8 +572,6 @@ body {
   background-position: center;
   -webkit-transition: 0.4s all ease;
   transition: 0.4s all ease;
-  height: 11vw;
-  width: 11vw;
   height: 150px;
   width: 150px;
   opacity: 0;
@@ -787,7 +787,7 @@ body {
   left: 50%;
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 7;
 }
 
 .modal-window-container .content {
@@ -920,10 +920,6 @@ body {
   -webkit-transition: 0.5s all ease;
   transition: 0.5s all ease;
   background-image: url("./images/Pause - 2-01.png");
-}
-
-.modal-window-container .window-content .content-top .media-screen .btn-pause:hover {
-  opacity: 1;
 }
 
 .modal-window-container .window-content .content-bottom {
@@ -1308,5 +1304,362 @@ body {
   background-color: #dac14c;
   width: 10rem;
   height: 3rem;
+}
+
+@media only screen and (min-width: 1025px) {
+  .categories .buttons-container .btn:nth-child(1):hover {
+    border: 2px solid #99b5cc;
+  }
+  .categories .buttons-container .btn:nth-child(2):hover {
+    border: 2px solid #fed146;
+  }
+  .categories .buttons-container .btn:nth-child(3):hover {
+    border: 2px solid #dec44e;
+  }
+  .window-content .content-top .media-screen .btn-pause:hover {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  :root {
+    --website-info-column-width: 48%;
+  }
+  .overflow-wrapper .website-wrapper {
+    width: 100%;
+    padding: 2rem 2rem;
+  }
+  .header {
+    top: 2rem;
+    width: 100%;
+  }
+  .header .btn {
+    margin-right: 2rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(1) {
+    font-size: 2.5rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(2) {
+    font-size: 4rem;
+  }
+  .website-info .text-boxes-container .text-box-lt .text {
+    height: 10.5rem;
+  }
+  .website-info .text-boxes-container .text-box-en .text {
+    height: 13.7rem;
+  }
+  .website-info .text-boxes-container .text-box-lt-open .text {
+    height: 23rem;
+  }
+  .website-info .text-boxes-container .text-box-en-open .text {
+    height: 27.5rem;
+  }
+  .interactive-map-section .map-container .map-images-container {
+    width: 100%;
+    height: 1042px;
+  }
+  .categories {
+    top: 25%;
+    right: 0%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .overflow-wrapper .website-wrapper {
+    width: 100%;
+    padding: 1rem 1rem;
+  }
+  .header {
+    top: 1rem;
+  }
+  .header .btn {
+    margin-right: 1rem;
+  }
+  .website-info .website-info-top .text-box {
+    line-height: 2.5rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(1) {
+    font-size: 1.7rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(2) {
+    font-size: 2.7rem;
+  }
+  .website-info .text-boxes-container .text-box-lt .text {
+    height: 14.8rem;
+  }
+  .website-info .text-boxes-container .text-box-en .text {
+    height: 16.3rem;
+  }
+  .website-info .text-boxes-container .text-box-lt-open .text {
+    height: 32rem;
+  }
+  .website-info .text-boxes-container .text-box-en-open .text {
+    height: 33rem;
+  }
+  .interactive-map-section .map-container .map-images-container {
+    height: 900px;
+  }
+  .modal-window-container .window-content {
+    width: calc(100% - 2rem);
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  :root {
+    --website-info-column-width: 100%;
+  }
+  .website-info {
+    min-height: auto;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+  .website-info .website-info-top {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+  }
+  .website-info .website-info-top .text-box {
+    margin-bottom: 1rem;
+    line-height: 3rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(1) {
+    font-size: 2rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(2) {
+    font-size: 3.3rem;
+  }
+  .website-info .text-boxes-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .website-info .text-boxes-container .text-box h1 {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    width: 100%;
+  }
+  .website-info .text-boxes-container .text-box .btn {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin-top: 1rem;
+  }
+  .website-info .text-boxes-container .text-box:nth-child(2) {
+    margin-top: 0;
+  }
+  .website-info .text-boxes-container .text-box-lt {
+    margin-bottom: 2rem;
+  }
+  .website-info .text-boxes-container .text-box-lt .text {
+    height: 13.7rem;
+  }
+  .website-info .text-boxes-container .text-box-en {
+    margin-top: 0;
+  }
+  .website-info .text-boxes-container .text-box-en .text {
+    height: 15rem;
+  }
+  .website-info .text-boxes-container .text-box-lt-open .text {
+    height: 29rem;
+  }
+  .website-info .text-boxes-container .text-box-en-open .text {
+    height: 31.5rem;
+  }
+  .interactive-map-section .map-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+  .interactive-map-section .map-container .categories {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+  .interactive-map-section .map-container .categories .text-container {
+    margin-bottom: 0rem;
+  }
+  .interactive-map-section .map-container .categories .buttons-container .btn .circle {
+    height: 60px;
+    width: 60px;
+  }
+  .interactive-map-section .map-container .map-images-container {
+    height: 500px;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .map-icons-container .btn {
+    height: 115px;
+    width: 100px;
+  }
+  .map-icons-container .btn .logo {
+    height: 100px;
+    width: 100px;
+  }
+  @-webkit-keyframes logo-clicked-animation {
+    0% {
+      height: 100px;
+      width: 100px;
+    }
+    50% {
+      height: 110px;
+      width: 110px;
+    }
+    100% {
+      height: 100px;
+      width: 100px;
+    }
+  }
+  @keyframes logo-clicked-animation {
+    0% {
+      height: 100px;
+      width: 100px;
+    }
+    50% {
+      height: 110px;
+      width: 110px;
+    }
+    100% {
+      height: 100px;
+      width: 100px;
+    }
+  }
+  .modal-window-container {
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+    position: fixed;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+  }
+  .modal-window-container .window-content {
+    width: 100%;
+  }
+  .modal-window-container .window-content .content-top {
+    padding: 1rem;
+    padding-bottom: 0rem;
+    height: 300px;
+  }
+  .modal-window-container .window-content .content-top .media-screen {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-window-container .window-content .content-bottom .content-bottom-wrapper {
+    padding: 1rem;
+  }
+  .modal-window-container .window-content .content-bottom .content-bottom-wrapper .image-container {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .website-info .website-info-top .text-box {
+    line-height: 3rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(1) {
+    font-size: 1.8rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(2) {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .website-info .website-info-top .text-box {
+    line-height: 2.5rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(1) {
+    font-size: 1.6rem;
+  }
+  .website-info .website-info-top .text-box h1:nth-child(2) {
+    font-size: 2.5rem;
+  }
+  .interactive-map-section .map-container .map-images-container {
+    height: 450px;
+  }
+  .map-icons-container .btn {
+    height: 100px;
+    width: 80px;
+  }
+  .map-icons-container .btn .logo {
+    height: 80px;
+    width: 80px;
+  }
+  @-webkit-keyframes logo-clicked-animation {
+    0% {
+      height: 80px;
+      width: 80px;
+    }
+    50% {
+      height: 95px;
+      width: 95px;
+    }
+    100% {
+      height: 80px;
+      width: 80px;
+    }
+  }
+  @keyframes logo-clicked-animation {
+    0% {
+      height: 80px;
+      width: 80px;
+    }
+    50% {
+      height: 95px;
+      width: 95px;
+    }
+    100% {
+      height: 80px;
+      width: 80px;
+    }
+  }
 }
 /*# sourceMappingURL=index.css.map */

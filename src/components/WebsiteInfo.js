@@ -21,6 +21,9 @@ export class WebsiteInfo extends Component {
     this.setState({ readMoreEnClicked: !initialState });
   };
   render() {
+    const textBoxLtClass = this.state.readMoreLtClicked ? "text-box-lt-open" : "";
+    const textBoxEnClass = this.state.readMoreEnClicked ? "text-box-en-open" : "";
+
     return (
       <div
         className="website-info"
@@ -38,9 +41,9 @@ export class WebsiteInfo extends Component {
           <div className="map-image"></div>
         </div>
         <div className="text-boxes-container">
-          <div className="text-box">
+          <div className={`text-box text-box-lt ${textBoxLtClass}`}>
             <h1>Apie projektą:</h1>
-            <p className="text" style={{ height: this.state.readMoreLtClicked ? "20rem" : "9rem" }}>
+            <p className="text">
               Projektas Šeduvos virtualus turas „Kelionė laiku“ kviečia keliauti trimis skirtingais maršrutais: „Šeduvos istorija“, „Šeduvos
               legendos“ ir „Šeduva dabar“. Pirmame maršrute „Šeduvos istorija“ susipažinsite su miesto istorija, apžiūrėsite Daugyvenės
               muziejaus Šeduvos kraštotyros skyriaus rinkinių 3D parodą, išgirsite Šeduvos Babos – Emilijos Brajinskienės pasakojimą apie
@@ -53,9 +56,9 @@ export class WebsiteInfo extends Component {
               {this.state.readMoreLtClicked ? "Skaityti mažiau" : "Skaityti daugiau"}
             </div>
           </div>
-          <div className="text-box">
+          <div className={`text-box text-box-en ${textBoxEnClass}`}>
             <h1>About project:</h1>
-            <p className="text " style={{ height: this.state.readMoreEnClicked ? "21.5rem" : "10.5rem" }}>
+            <p className="text">
               The project Šeduva virtual Tour "Journey in Time" invites you to travel on three different routes: "History of Šeduva",
               "Legends of Šeduva" and "Šeduva nowadays". On the first route "History of Šeduva" you will get acquainted with the history of
               the town, see a 3D exhibition of Šeduva Local Ethnographic Department Daugyvene Museum‘s collections , listen to the story of
