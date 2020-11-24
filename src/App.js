@@ -29,6 +29,7 @@ class App extends React.Component {
             <Header />
             <WebsiteInfo />
             <InteractiveMap />
+            {/* <ModelViewer /> */}
           </div>
         </div>
       </div>

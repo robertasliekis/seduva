@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ModelViewer from "./ModelViewer";
 
 import { mouseEnterMap, setScrollPosition } from "../actions";
-
-// import image1Url from "../images/simkunaite/simkunaite1.jpg";
-// import image2Url from "../images/simkunaite/simkunaite2.jpg";
-// import image3Url from "../images/simkunaite/simkunaite3.jpg";
-// import image4Url from "../images/simkunaite/simkunaite4.jpg";
-
-// const imageArray = [image1Url, image2Url, image3Url, image4Url];
 
 import videoAbout1 from "../video/video1.mp4";
 import videoAbout2 from "../video/video1.mp4";
@@ -30,23 +24,23 @@ const categoriesNames = [
 ];
 
 const iconNames = [
-  ["history", "gallery"],
-  ["history", "audio"],
-  ["legends", "video"],
-  ["legends", "video"],
-  ["legends", "video"],
-  ["legends", "video"],
-  ["legends", "video"],
-  ["legends", "video"],
-  ["legends", "video"],
-  ["present", "virtual-reality"],
-  ["present", "virtual-reality"],
-  ["present", "virtual-reality"],
-  ["present", "virtual-reality"],
-  ["present", "virtual-reality"],
-  ["present", "virtual-reality"],
-  ["present", "virtual-reality"],
-  ["present", "virtual-reality"]
+  ["history", "gallery", 1],
+  ["history", "audio", 1],
+  ["legends", "video", 2],
+  ["legends", "video", 3],
+  ["legends", "video", 4],
+  ["legends", "video", 5],
+  ["legends", "video", 6],
+  ["legends", "video", 7],
+  ["legends", "video", 8],
+  ["present", "virtual-reality", 1],
+  ["present", "virtual-reality", 2],
+  ["present", "virtual-reality", 3],
+  ["present", "virtual-reality", 4],
+  ["present", "virtual-reality", 5],
+  ["present", "virtual-reality", 6],
+  ["present", "model-view", 1],
+  ["present", "model-view", 2]
 ];
 
 const iconInnactiveUrl = [
@@ -188,9 +182,9 @@ export class InteractiveMap extends Component {
       categoryRef: "",
       containerType: "",
       containerIndex: 0,
+      contentIndex: 1,
       galleryImageIndex: 0,
       confirmVROpen: false,
-      mapZoomLevel: 1,
       scrollPosition: 0,
       mouseEnterMap: true,
       mediaPlayState: false,
@@ -198,6 +192,7 @@ export class InteractiveMap extends Component {
       videoIndex: 0
     };
     this.categoriesRefs = {};
+    this.logoButtonRefs = {};
     this.logoInnactiveRefs = {};
     this.logoHoveredRefs = {};
     this.logoClickedRefs = {};
@@ -224,23 +219,8 @@ export class InteractiveMap extends Component {
     });
   };
 
-  mapZoomHandler = (event) => {
-    let initialState = this.state.mapZoomLevel;
-    if (event.deltaY > 0 && this.state.mapZoomLevel <= 2) {
-      this.setState({ mapZoomLevel: initialState + 0.1 });
-    } else if (event.deltaY < 0 && this.state.mapZoomLevel > 1) {
-      this.setState({ mapZoomLevel: initialState - 0.1 });
-    }
-  };
-
   componentDidUpdate(prevProps, prevState) {
     if (this.state.categoryTypeHovered !== prevState.categoryTypeHovered) {
-      if (this.state.categoryTypeClicked !== "") {
-        for (let i = 0; i < 3; i++) {
-          // this.categoriesRefs[i].classList.remove(`btn-border-${categoriesNames[i][1]}`);
-        }
-      }
-
       for (let i = 0; i < iconNames.length; i++) {
         this.logoHoveredRefs[i].style.opacity = 0;
         if (this.state.categoryTypeHovered !== "") {
@@ -263,6 +243,7 @@ export class InteractiveMap extends Component {
           this.logoClickedRefs[i].style.opacity = 1;
           this.logoClickedRefs[i].style.pointerEvents = "auto";
           this.logoClickedRefs[i].classList.add("logo-animation");
+          this.logoButtonRefs[i].classList.add("btn-active");
         } else {
           this.logoInnactiveRefs[i].style.opacity = 1;
           this.logoClickedRefs[i].style.opacity = 0;
@@ -283,11 +264,7 @@ export class InteractiveMap extends Component {
     this.props.setScrollPosition(0);
   };
 
-  resetZoomHandler = () => {
-    this.setState({ mapZoomLevel: 1 });
-  };
-
-  openContainerClicked = (type, index) => {
+  openContainerClicked = (type, index, contentIndex) => {
     if (this.state.containerType === "") {
       this.setState({ containerType: type, containerIndex: index });
       if (type === "audio") {
@@ -299,6 +276,9 @@ export class InteractiveMap extends Component {
       this.setState({ containerType: "", containerIndex: 0 });
     }
     this.setState({ mediaPlayState: false });
+    if (contentIndex !== undefined) {
+      this.setState({ contentIndex: contentIndex });
+    }
     this.videoAboutRef.current.pause();
     this.videoAboutRef.current.currentTime = 0;
     this.audioAboutRef.current.pause();
@@ -328,8 +308,6 @@ export class InteractiveMap extends Component {
     this.setState({ confirmVROpen: true, containerType: "" });
   };
 
-  componentDidMount() {}
-
   render() {
     return (
       <div className="interactive-map-section">
@@ -339,7 +317,13 @@ export class InteractiveMap extends Component {
             <div className="map-icons-container">
               {iconNames.map((icon, index) => {
                 return (
-                  <div className={`btn btn-${icon[0]}`} key={`${icon[0]}${index}`}>
+                  <div
+                    ref={(ref) => {
+                      this.logoButtonRefs[index] = ref;
+                    }}
+                    className={`btn btn-${icon[0]}`}
+                    key={`${icon[0]}${index}`}
+                  >
                     <div
                       ref={(ref) => {
                         this.logoInnactiveRefs[index] = ref;
@@ -356,7 +340,7 @@ export class InteractiveMap extends Component {
                     ></div>
                     <div
                       onClick={() => {
-                        this.openContainerClicked(icon[1], index);
+                        this.openContainerClicked(icon[1], index, icon[2]);
                       }}
                       ref={(ref) => {
                         this.logoClickedRefs[index] = ref;
@@ -406,7 +390,12 @@ export class InteractiveMap extends Component {
           className={`modal-window-container window-${this.state.containerType}`}
           style={{ display: this.state.containerType !== "" ? "flex" : "none" }}
         >
-          <div className="window-content" style={{ display: this.state.containerType !== "virtual-reality" ? "flex" : "none" }}>
+          <div
+            className="window-content"
+            style={{
+              display: this.state.containerType !== "virtual-reality" && this.state.containerType !== "model-view" ? "flex" : "none"
+            }}
+          >
             <div className="content-top">
               {/* Audio and video screens */}
               <div
@@ -470,7 +459,7 @@ export class InteractiveMap extends Component {
               <div
                 className="btn btn-close"
                 onClick={() => {
-                  this.openContainerClicked(this.state.containerType);
+                  this.openContainerClicked();
                 }}
               ></div>
             </div>
@@ -494,10 +483,17 @@ export class InteractiveMap extends Component {
           </div>
           <div className="window-content" style={{ display: this.state.containerType === "virtual-reality" ? "flex" : "none" }}>
             <div className="btn btn-close" onClick={this.openContainerClicked}></div>
-            <p>Jūs įeinate į 360° VRT</p>
+            <p>Jūs įeinate į 360° turą</p>
             <div className="btn btn-confirm-vr" onClick={this.btnVRConfirmClicked}>
               Ok
             </div>
+          </div>
+          <div
+            className="window-content window-content-model-view"
+            style={{ display: this.state.containerType === "model-view" ? "flex" : "none" }}
+          >
+            <div className="btn btn-close" onClick={this.openContainerClicked}></div>
+            <ModelViewer contentIndex={this.state.contentIndex} />
           </div>
         </div>
       </div>
