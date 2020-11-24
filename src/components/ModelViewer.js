@@ -6,7 +6,7 @@ import { OrbitControls, draco } from "drei";
 // const modelPaths = ["/scene-draco1.glb", "/scene-draco2.glb"];
 
 function Keen(props) {
-  const { nodes, materials } = useLoader(GLTFLoader, `/scene-draco${props.contentIndex}.glb`, draco());
+  const { nodes, materials } = useLoader(GLTFLoader, `./scene-draco${props.contentIndex}.glb`, draco());
   return (
     <group position={[0, -7, 0]} rotation={[-Math.PI / 2, 0, 0]} dispose={null}>
       <mesh
