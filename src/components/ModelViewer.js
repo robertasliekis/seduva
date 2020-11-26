@@ -1,7 +1,7 @@
 import React, { Suspense, Component } from "react";
 import { Canvas, useLoader } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OrbitControls, draco } from "drei";
+import { OrbitControls, draco, Html } from "drei";
 
 import { TextureLoader, MeshStandardMaterial, sRGBEncoding } from "three";
 import * as THREE from "three";
@@ -60,7 +60,7 @@ export default function App(props) {
           shadow-mapSize-height={2048}
           castShadow
         />
-        <Suspense fallback={null}>
+        <Suspense fallback={<Html>loading..</Html>}>
           <Keen contentIndex={props.contentIndex} />
         </Suspense>
         <OrbitControls
