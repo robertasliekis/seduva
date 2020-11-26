@@ -33,14 +33,14 @@ const iconNames = [
   ["legends", "video", 6],
   ["legends", "video", 7],
   ["legends", "video", 8],
-  ["present", "virtual-reality", 1],
-  ["present", "virtual-reality", 2],
-  ["present", "virtual-reality", 3],
-  ["present", "virtual-reality", 4],
-  ["present", "virtual-reality", 5],
-  ["present", "virtual-reality", 6],
-  ["present", "model-view", 1],
-  ["present", "model-view", 2]
+  ["present", "audio", 1],
+  ["present", "audio", 2],
+  ["present", "audio", 3],
+  ["present", "audio", 4],
+  ["passive", "model-view", 1],
+  ["present", "audio", 5],
+  ["passive", "model-view", 1],
+  ["passive", "model-view", 2]
 ];
 
 const iconInnactiveUrl = [
@@ -105,14 +105,14 @@ const iconClickedUrl = [
 
 const modalWindowText = [
   [
-    "Šeduvos baba",
-    "Etnografė, Lietuvos šviesuolė Emilija Brajinskienė, dar vadinama Šeduvos Baba, gimė 1930 m. Ji yra surinkusi visą lietuvių liaudies kūrybos lobyną, kuriame yra dainuojamoji tautosaka (dainos, raudos) ir sakytinė tautosaka (pasakos, sakmės, padavimai, nutikimai, mįslės, minklės, patarlės, priežodžiai, burtai, oracijos ir kt.). Emilija yra puiki pasakotoja,turinti fenomenalią atmintį ir kalbanti šeduvių tarme."
-  ],
-  [
     "Daugyvenės kultūros istorijos muziejus",
     `1884 m. statytame Bencelio Blocho name, esančiame Vėriškių gatvėje, kadaise veikė odų perdirbimo įmonė. 1958 metais čia buvo įkurtas Šeduvos kraštotyros muziejus, pradžioje veikęs visuomeniniais pagrindais. 1959–1998 m. Šeduvos kraštotyros muziejaus vedėju buvo kraštotyrininkas, muziejininkas Vytautas Šenauskas (1929–2007).
     Atgimimo metais Šeduvos muziejus tapo Daugyvenės kultūros istorijos muziejaus - draustinio Šeduvos kraštotyros skyriumi. Jam ir toliau vadovavo Vytautas Šenauskas. Muziejaus ekspozicijoje buvo rodomi archeologiniai radiniai, liaudies meno meistrų darbai, nuotraukos, archyviniai dokumentai, pinigų, medalių ir ordinų kolekcijos, kiti vertingi eksponatai. Vertingi kunigaikščių Giedraičių paveikslai, bei 1994 m. dailininko Boleslovo Plungės padovanoti tapybos darbai - paveikslų kolekcija. 
     Šiuo metu visi muziejaus eksponatai saugomi Daugyvenės kultūros istorijos muziejaus - draustinio saugyklose.`
+  ],
+  [
+    "Šeduvos baba",
+    "Etnografė, Lietuvos šviesuolė Emilija Brajinskienė, dar vadinama Šeduvos Baba, gimė 1930 m. Ji yra surinkusi visą lietuvių liaudies kūrybos lobyną, kuriame yra dainuojamoji tautosaka (dainos, raudos) ir sakytinė tautosaka (pasakos, sakmės, padavimai, nutikimai, mįslės, minklės, patarlės, priežodžiai, burtai, oracijos ir kt.). Emilija yra puiki pasakotoja,turinti fenomenalią atmintį ir kalbanti šeduvių tarme."
   ],
   [
     "1. Legenda „Malūnas“. Kodėl malūno sparnai sukasi be vėjo?",
@@ -153,17 +153,17 @@ const modalWindowText = [
     `Tai – seniausias Šeduvos kultūros paveldo objektas ir vienas iš vertingiausių Lietuvos sakralinės architektūros kūrinių. Bažnyčia pastatyta XVII a. vid. Renesansinė, turi baroko bruožų, kryžminio plano, su pusapskrite apside, žemomis zakristijomis, dvibokštė. Vidus – halinis, 3 navų, yra 5 altoriai. Skliautai cilindriniai. Šventoriaus tvora – akmenų mūro.`
   ],
   [
+    "Retromobiliai",
+    `Mobili istorinės, taip pat istorinės karinės technikos muziejaus „Retromobile“ ekspozicija, kuri bet kuriuo momentu gali pajudėti iš vietos. Šeduvos muziejaus ekspozicija - neįkainojama: kiekviena priemonė yra visiški originali iki pat variklio ir važiuoklės. Pats įspūdingiausias - aštuonių cilindrų galingasis amerikietiškasis „Kadilakas“, pagamintas dar 1929 metais. Tai - tikra legenda. Lankytojams siūloma pamatyti ne tik amerikietišką, bet ir vokišką, čekoslovakišką ir, žinoma, sovietinę techniką. Kiekvienas gali ne tik pasižvalgyti, bet ir išgirsti išsamų gido pasakojimą.
+    Kontaktai: el.p. info@retromobile.lt  tel. 868227122, 861737078, 868527479.`
+  ],
+  [
     "Užvažiuojamieji namai – karčema. Aikštė",
     `Nuo 18 a. antros pusės prie Šeduvos Laisvės aikštės šliejosi dideli, įdomūs savo architektūra ir planavimu pirklių ir šiaip pakeleivių nakvynės namai su arklidėmis (Užvažiuojamieji namai). XVIII a. aikštės pakrašty stovinčiame pastate buvo galima pailsėti, pernakvoti ir pakeisti arklius. Pastate buvo įrengtos stadalos, skirtos keliautojų arkliams ir transporto priemonėms, kitam gale – patalpos keliautojams.
     Per I-ąjį pasaulinį karą, 1915 m. pastatas sudegė. Buvo atstatyta tik gyvenamoji dalis ir gerokai pakeistas planas. Nakvynės namai neteko senosios architektūrinės išvaizdos.
     Laisvės aikštėje 2007 m. pastatytas Šiaulių Prisikėlimo apygardos partizanams skirtas paminklas - SAKALAS. Paminklo autoriai: skulptorius Romanas Kazlauskas, architektai Arūnas Eduardas Paslaitis ir Viktorija Paslaitytė.`
   ],
-  ["Stulpas paukstis", "tekstas"],
-  [
-    "Retromobiliai",
-    `Mobili istorinės, taip pat istorinės karinės technikos muziejaus „Retromobile“ ekspozicija, kuri bet kuriuo momentu gali pajudėti iš vietos. Šeduvos muziejaus ekspozicija - neįkainojama: kiekviena priemonė yra visiški originali iki pat variklio ir važiuoklės. Pats įspūdingiausias - aštuonių cilindrų galingasis amerikietiškasis „Kadilakas“, pagamintas dar 1929 metais. Tai - tikra legenda. Lankytojams siūloma pamatyti ne tik amerikietišką, bet ir vokišką, čekoslovakišką ir, žinoma, sovietinę techniką. Kiekvienas gali ne tik pasižvalgyti, bet ir išgirsti išsamų gido pasakojimą.
-    Kontaktai: el.p. info@retromobile.lt  tel. 868227122, 861737078, 868527479.`
-  ],
+  ["kazkas", "kazkas"],
   [
     "Žydų kapinės",
     `Kapinėse, esančiose Žvejų gatvės gale iki antrojo pasaulinio karo buvo laidojami mieste gyvenę žydai. Pirmasis laidojimas žymimas 1820 m. data.
@@ -189,7 +189,9 @@ export class InteractiveMap extends Component {
       mouseEnterMap: true,
       mediaPlayState: false,
       mediaRef: undefined,
-      videoIndex: 0
+      videoIndex: 0,
+      modelSelected: 1,
+      modelFullScreenClicked: false
     };
     this.categoriesRefs = {};
     this.logoButtonRefs = {};
@@ -265,6 +267,7 @@ export class InteractiveMap extends Component {
   };
 
   openContainerClicked = (type, index, contentIndex) => {
+    console.log(type);
     if (this.state.containerType === "") {
       this.setState({ containerType: type, containerIndex: index });
       if (type === "audio") {
@@ -283,6 +286,8 @@ export class InteractiveMap extends Component {
     this.videoAboutRef.current.currentTime = 0;
     this.audioAboutRef.current.pause();
     this.audioAboutRef.current.currentTime = 0;
+
+    this.setState({ modelFullScreenClicked: false, modelSelected: 1 });
   };
 
   buttonPlayClickedHandler = (ref) => {
@@ -294,13 +299,19 @@ export class InteractiveMap extends Component {
   };
 
   nextImageClicked = () => {
-    if (this.state.galleryImageIndex !== 4) {
-      this.setState({ galleryImageIndex: this.state.galleryImageIndex + 1 });
+    // if (this.state.galleryImageIndex !== 4) {
+    //   this.setState({ galleryImageIndex: this.state.galleryImageIndex + 1 });
+    // }
+    if (this.state.modelSelected !== 10) {
+      this.setState({ modelSelected: this.state.modelSelected + 1 });
     }
   };
   previousImageClicked = () => {
-    if (this.state.galleryImageIndex !== 0) {
-      this.setState({ galleryImageIndex: this.state.galleryImageIndex - 1 });
+    // if (this.state.galleryImageIndex !== 0) {
+    //   this.setState({ galleryImageIndex: this.state.galleryImageIndex - 1 });
+    // }
+    if (this.state.modelSelected !== 1) {
+      this.setState({ modelSelected: this.state.modelSelected - 1 });
     }
   };
 
@@ -308,7 +319,13 @@ export class InteractiveMap extends Component {
     this.setState({ confirmVROpen: true, containerType: "" });
   };
 
+  modelFullScreenClicked = () => {
+    const currentState = this.state.modelFullScreenClicked;
+    this.setState({ modelFullScreenClicked: !currentState });
+  };
+
   render() {
+    const modelFullScreenClass = this.state.modelFullScreenClicked ? "model-window-full-screen" : "";
     return (
       <div className="interactive-map-section">
         <div className="map-container">
@@ -396,7 +413,7 @@ export class InteractiveMap extends Component {
               display: this.state.containerType !== "virtual-reality" && this.state.containerType !== "model-view" ? "flex" : "none"
             }}
           >
-            <div className="content-top">
+            <div className={`content-top ` + modelFullScreenClass}>
               {/* Audio and video screens */}
               <div
                 className="media-screen"
@@ -426,26 +443,26 @@ export class InteractiveMap extends Component {
                 ></div>
               </div>
               {/* Gallery media screen start*/}
-              <div className="media-screen" style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
+              <div className={`media-screen`} style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
                 <div className="buttons">
                   <div
                     className="btn btn-gallery btn-previous"
                     onClick={this.previousImageClicked}
                     style={{
-                      opacity: this.state.galleryImageIndex === 0 ? 0.6 : 1,
-                      cursor: this.state.galleryImageIndex === 0 ? "default" : "pointer"
+                      opacity: this.state.modelSelected === 1 ? 0.6 : 1,
+                      cursor: this.state.modelSelected === 1 ? "default" : "pointer"
                     }}
                   ></div>
                   <div
                     className="btn btn-gallery btn-next"
                     onClick={this.nextImageClicked}
                     style={{
-                      opacity: this.state.galleryImageIndex === 4 ? 0.6 : 1,
-                      cursor: this.state.galleryImageIndex === 4 ? "default" : "pointer"
+                      opacity: this.state.modelSelected === 10 ? 0.6 : 1,
+                      cursor: this.state.modelSelected === 10 ? "default" : "pointer"
                     }}
                   ></div>
                 </div>
-                <div className={`image-container`}>
+                {/* <div className={`image-container`}>
                   <div className="image-carousel-overflow">
                     <div className="image-carousel " style={{ left: `${this.state.galleryImageIndex * -100}%` }}>
                       {imageNumbers.map((imageNumber) => {
@@ -453,6 +470,10 @@ export class InteractiveMap extends Component {
                       })}
                     </div>
                   </div>
+                </div> */}
+                <div className="model-view-wrapper">
+                  <ModelViewer contentIndex={this.state.modelSelected} key={this.state.modelSelected} />
+                  <div className="btn-full-screen" onClick={this.modelFullScreenClicked}></div>
                 </div>
               </div>
               {/* Gallery media screen end*/}
@@ -465,7 +486,7 @@ export class InteractiveMap extends Component {
             </div>
             <div className="content-bottom">
               <div className="content-bottom-wrapper">
-                <div className="image-container" style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
+                {/* <div className="image-container" style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
                   {imageNumbers.map((imageNumber, index) => {
                     return (
                       <div
@@ -475,7 +496,7 @@ export class InteractiveMap extends Component {
                       ></div>
                     );
                   })}
-                </div>
+                </div> */}
                 <h1>{modalWindowText[this.state.containerIndex][0]}</h1>
                 <p>{modalWindowText[this.state.containerIndex][1]}</p>
               </div>
@@ -493,7 +514,7 @@ export class InteractiveMap extends Component {
             style={{ display: this.state.containerType === "model-view" ? "flex" : "none" }}
           >
             <div className="btn btn-close" onClick={this.openContainerClicked}></div>
-            <ModelViewer contentIndex={this.state.contentIndex} />
+            {/* <ModelViewer contentIndex={this.state.contentIndex} /> */}
           </div>
         </div>
       </div>

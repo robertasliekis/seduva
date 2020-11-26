@@ -196,13 +196,14 @@ body {
         overflow: hidden;
         transition: 0.5s all ease;
         font-size: 18px;
+        line-height: 27px;
       }
       .btn {
         align-self: flex-end;
         padding: 1rem 0;
         background-color: #e8db9b;
         width: 10rem;
-        margin-top: 2rem;
+        margin-top: 1rem;
         transition: 0.5s all ease;
         border: none;
         outline: none;
@@ -214,22 +215,22 @@ body {
     }
     .text-box-lt {
       .text {
-        height: 9rem;
+        height: 10rem;
       }
     }
     .text-box-en {
       .text {
-        height: 10.5rem;
+        height: 12rem;
       }
     }
     .text-box-lt-open {
       .text {
-        height: 20rem;
+        height: 22rem;
       }
     }
     .text-box-en-open {
       .text {
-        height: 21.5rem;
+        height: 24rem;
       }
     }
     .text-box:nth-child(2) {
@@ -358,7 +359,7 @@ body {
       height: 150px;
       width: 150px;
       opacity: 0;
-      animation-duration: 1s;
+      animation-duration: 2s;
       animation-fill-mode: forwards;
       animation-iteration-count: infinite;
       animation-delay: 0.2s;
@@ -390,6 +391,13 @@ body {
     .logo-scale-animation {
       height: 13vw;
       width: 13vw;
+    }
+  }
+
+  .btn-passive {
+    pointer-events: auto;
+    .logo {
+      pointer-events: auto !important;
     }
   }
 
@@ -490,7 +498,7 @@ body {
     height: 150px;
   }
 
-  .btn-present:nth-child(14) {
+  .btn-passive:nth-child(14) {
     height: 100px;
     top: 44%;
     left: 50%;
@@ -508,14 +516,14 @@ body {
     }
   }
 
-  .btn-present:nth-child(16) {
+  .btn-passive:nth-child(16) {
     top: 78%;
     left: 37%;
     width: 160px;
     height: 140px;
   }
 
-  .btn-present:nth-child(17) {
+  .btn-passive:nth-child(17) {
     z-index: 2;
     top: 91%;
     left: 73%;
@@ -547,8 +555,8 @@ body {
     box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
     .btn-close {
       position: absolute;
-      right: 1rem;
-      top: 1rem;
+      right: 20px;
+      top: 20px;
       height: 40px;
       width: 40px;
       background-position: center;
@@ -644,17 +652,54 @@ body {
 .window-gallery {
   @include displayFlex();
   .window-content {
+    .model-window-full-screen {
+      transform: translate(-50%, -50%);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      .media-screen {
+        width: 100%;
+        height: 100%;
+        .model-view-wrapper {
+          .btn-full-screen {
+            right: 80px !important;
+          }
+        }
+      }
+    }
     .content-top {
       background-color: rgb(189, 218, 85);
       .media-screen {
         @include displayFlexBetween();
         position: relative;
+        background: linear-gradient(0deg, rgba(61, 61, 61, 1) 0%, rgb(107, 107, 107) 100%);
+        .model-view-wrapper {
+          width: 100%;
+          height: 100%;
+          .model-view-container {
+            width: 100%;
+            height: 100%;
+          }
+          .btn-full-screen {
+            position: absolute;
+            transform: translate(0, 0);
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: 3px solid white;
+            cursor: pointer;
+          }
+        }
         .buttons {
           @include positionAbsoluteCenter();
           @include displayFlexBetween();
-          padding: 0 10px;
+          padding: 0 20px;
           width: 100%;
           z-index: 2;
+          height: 0px;
           .btn-gallery {
             position: relative;
             height: 40px;
@@ -862,7 +907,7 @@ body {
   }
 
   .website-info {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     .website-info-top {
       .text-box {
         h1:nth-child(1) {
@@ -876,22 +921,22 @@ body {
     .text-boxes-container {
       .text-box-lt {
         .text {
-          height: 12rem;
+          height: 13.5rem;
         }
       }
       .text-box-en {
         .text {
-          height: 13.5rem;
+          height: 15rem;
         }
       }
       .text-box-lt-open {
         .text {
-          height: 24rem;
+          height: 27rem;
         }
       }
       .text-box-en-open {
         .text {
-          height: 28rem;
+          height: 30.5rem;
         }
       }
     }
@@ -1198,7 +1243,7 @@ body {
       left: 36%;
     }
 
-    .btn-present:nth-child(14) {
+    .btn-passive:nth-child(14) {
       height: 60px;
       width: 105px;
       top: 44%;
@@ -1212,14 +1257,14 @@ body {
       left: 57%;
     }
 
-    .btn-present:nth-child(16) {
+    .btn-passive:nth-child(16) {
       width: 110px;
       height: 85px;
       top: 83%;
       left: 37%;
     }
 
-    .btn-present:nth-child(17) {
+    .btn-passive:nth-child(17) {
       height: 60px;
       width: 90px;
       top: 93%;
