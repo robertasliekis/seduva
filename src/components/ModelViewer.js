@@ -1,4 +1,4 @@
-import React, { Suspense, Component } from "react";
+import React, { Suspense } from "react";
 import { Canvas, useLoader } from "react-three-fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls, draco, Html } from "drei";
@@ -15,29 +15,84 @@ function Keen(props) {
   }
   //const { nodes, materials } = useLoader(GLTFLoader, `./scene-draco${modelIndex}.glb`, draco());
   const { nodes } = useLoader(GLTFLoader, `./models/model_${modelIndex}.glb`, draco());
-  console.log(nodes);
 
   const textureLoader = new TextureLoader();
   const texture = textureLoader.load(`./textures/model_${modelIndex}.jpg`);
-  //const texture = textureLoader.load("./checker.png");
   texture.wrapS = THREE.RepeatWrapping;
   // texture.repeat.x = -1;
   texture.flipY = false;
-  // texture.repeat.set(-1, 0.9);
+
   texture.encoding = sRGBEncoding;
 
   const modelGeometry = nodes.object_1.geometry;
 
   const modelMaterial = new MeshStandardMaterial({
     roughness: 0.7,
-    metallness: 0,
+    //metallness: 0,
     map: texture
   });
 
   modelMaterial.side = THREE.DoubleSide;
+  const objectTransforms = [
+    [
+      [0, 0, 0],
+      [0, 0.7, 0],
+      [1.1, 1.1, 1.1]
+    ],
+    [
+      [0, 0, 0],
+      [0, 0.7, 0],
+      [1.2, 1.2, 1.2]
+    ],
+    [
+      [0, 0, 0],
+      [0, 0.2, 0],
+      [1.5, 1.5, 1.5]
+    ],
+    [
+      [0, 0, 0],
+      [0, 90, 0],
+      [1.5, 1.5, 1.5]
+    ],
+    [
+      [0, 0, 0],
+      [0, 90, 0],
+      [1.5, 1.5, 1.5]
+    ],
+    [
+      [0, 0, 0],
+      [0, 1, 0],
+      [1.3, 1.3, 1.3]
+    ],
+    [
+      [0, 0, 0],
+      [0, 0.7, 0],
+      [1.2, 1.2, 1.2]
+    ],
+    [
+      [0, 0, 0],
+      [0, 1.3, 0],
+      [1, 1, 1]
+    ],
+    [
+      [0, 0, 0],
+      [0, 3, 0],
+      [1.5, 1.5, 1.5]
+    ],
+    [
+      [0, 0, 0],
+      [0, 0.9, 0],
+      [1.5, 1.5, 1.5]
+    ]
+  ];
 
   return (
-    <group position={[0, 0, 0]} scale={[0.2, 0.2, 0.2]} rotation={[-Math.PI / 180, 0, 0]} dispose={null}>
+    <group
+      position={objectTransforms[modelIndex - 1][0]}
+      rotation={objectTransforms[modelIndex - 1][1]}
+      scale={objectTransforms[modelIndex - 1][2]}
+      dispose={null}
+    >
       <mesh {...props} geometry={modelGeometry} castShadow receiveShadow material={modelMaterial}>
         {/* <meshStandardMaterial attach="material" roughness={0.5} metalness={0} map={texture} DoubleSide /> */}
       </mesh>
@@ -49,7 +104,7 @@ export default function App(props) {
   return (
     <div className="model-view-container">
       {/* {console.log(props.contentIndex)} */}
-      <Canvas shadowMap invalidateFrameloop camera={{ position: [0, 0, 25], far: 1500 }}>
+      <Canvas shadowMap invalidateFrameloop camera={{ position: [0, 20, 120], far: 1500 }}>
         <ambientLight />
         <spotLight
           intensity={1}
@@ -60,7 +115,13 @@ export default function App(props) {
           shadow-mapSize-height={2048}
           castShadow
         />
-        <Suspense fallback={<Html>loading..</Html>}>
+        <Suspense
+          fallback={
+            <Html>
+              <div className="loading-text">Loading...</div>
+            </Html>
+          }
+        >
           <Keen contentIndex={props.contentIndex} />
         </Suspense>
         <OrbitControls

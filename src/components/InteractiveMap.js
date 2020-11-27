@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ModelViewer from "./ModelViewer";
+import PanoramaViewer from "./PanoramaViewer";
 
 import { mouseEnterMap, setScrollPosition } from "../actions";
 
@@ -11,9 +12,19 @@ import videoAbout4 from "../video/video1.mp4";
 import videoAbout5 from "../video/video1.mp4";
 import videoAbout6 from "../video/video1.mp4";
 import videoAbout7 from "../video/video1.mp4";
+import videoAbout8 from "../video/video1.mp4";
+
+import audioPanorama1 from "../audio/audio_malunas.mp3";
+import audioPanorama2 from "../audio/audio_baznycia.mp3";
+import audioPanorama3 from "../audio/audio_retromobiliai.mp3";
+import audioPanorama4 from "../audio/audio_karcema.mp3";
+import audioPanorama5 from "../audio/audio_kapines.mp3";
+
 import audioAbout from "../audio/baba-about.mp3";
 
-const videoAboutArray = [videoAbout1, videoAbout2, videoAbout3, videoAbout4, videoAbout5, videoAbout6, videoAbout7];
+const videoAboutArray = [videoAbout1, videoAbout2, videoAbout3, videoAbout4, videoAbout5, videoAbout6, videoAbout7, videoAbout8];
+
+const audioPanoramasArray = [audioPanorama1, audioPanorama2, audioPanorama3, audioPanorama4, audioPanorama5];
 
 const imageNumbers = [1, 2, 3, 4, 5];
 
@@ -25,22 +36,22 @@ const categoriesNames = [
 
 const iconNames = [
   ["history", "gallery", 1],
-  ["history", "audio", 1],
+  ["history", "video", 0],
+  ["legends", "video", 1],
   ["legends", "video", 2],
   ["legends", "video", 3],
   ["legends", "video", 4],
   ["legends", "video", 5],
   ["legends", "video", 6],
   ["legends", "video", 7],
-  ["legends", "video", 8],
+  ["present", "audio", 0],
   ["present", "audio", 1],
   ["present", "audio", 2],
   ["present", "audio", 3],
   ["present", "audio", 4],
-  ["passive", "model-view", 1],
-  ["present", "audio", 5],
-  ["passive", "model-view", 1],
-  ["passive", "model-view", 2]
+  ["passive", "", 1],
+  ["passive", "", 2],
+  ["passive", "", 3]
 ];
 
 const iconInnactiveUrl = [
@@ -57,8 +68,8 @@ const iconInnactiveUrl = [
   "./images/seduva dabar 2-1-01.png",
   "./images/seduva dabar 3-1-01.png",
   "./images/seduva dabar 4-1-01.png",
-  "./images/seduva dabar 5-1-01.png",
   "./images/seduva dabar 6-1-01.png",
+  "./images/seduva dabar 5-1-01.png",
   "./images/seduva dabar 7-1-01.png",
   "./images/seduva dabar 8-1-01.png"
 ];
@@ -77,8 +88,8 @@ const iconHoveredUrl = [
   "./images/seduva dabar 2-2-01.png",
   "./images/seduva dabar 3-2-01.png",
   "./images/seduva dabar 4-2-01.png",
-  "./images/seduva dabar 5-2-01.png",
   "./images/seduva dabar 6-2-01.png",
+  "./images/seduva dabar 5-2-01.png",
   "./images/seduva dabar 7-2-01.png",
   "./images/seduva dabar 8-2-01.png"
 ];
@@ -97,8 +108,8 @@ const iconClickedUrl = [
   "./images/seduva dabar 2-3-01.png",
   "./images/seduva dabar 3-3-01.png",
   "./images/seduva dabar 4-3-01.png",
-  "./images/seduva dabar 5-3-01.png",
   "./images/seduva dabar 6-3-01.png",
+  "./images/seduva dabar 5-3-01.png",
   "./images/seduva dabar 7-3-01.png",
   "./images/seduva dabar 8-3-01.png"
 ];
@@ -163,7 +174,6 @@ const modalWindowText = [
     Per I-ąjį pasaulinį karą, 1915 m. pastatas sudegė. Buvo atstatyta tik gyvenamoji dalis ir gerokai pakeistas planas. Nakvynės namai neteko senosios architektūrinės išvaizdos.
     Laisvės aikštėje 2007 m. pastatytas Šiaulių Prisikėlimo apygardos partizanams skirtas paminklas - SAKALAS. Paminklo autoriai: skulptorius Romanas Kazlauskas, architektai Arūnas Eduardas Paslaitis ir Viktorija Paslaitytė.`
   ],
-  ["kazkas", "kazkas"],
   [
     "Žydų kapinės",
     `Kapinėse, esančiose Žvejų gatvės gale iki antrojo pasaulinio karo buvo laidojami mieste gyvenę žydai. Pirmasis laidojimas žymimas 1820 m. data.
@@ -171,7 +181,21 @@ const modalWindowText = [
     Šalia Šeduvos Žydų kapinių 2018 m. pradėtos analogų pasaulyje neturinčio projekto – moderniausiomis technologijomis paremto litvakų miestelių istorijos, kultūros bei atminimo muziejaus „Dingęs Štetlas“ („The Lost Shtetl“) statybos. Projekto fundatorius Šveicarijoje gyvenantis verslininkas Ivan Glasenberg gimęs Pietų Afrikoje, kurio seneliai kilę iš Šeduvos. Čia bus atkurtas kažkada vienos didžiausių Europoje žydų diasporos miestelių gyvenimas.`
   ],
   ["Pastatas", "Tekstas"],
+  ["Pastatas", "Tekstas"],
   ["Stotis", "Tekstas"]
+];
+
+const modelDescription = [
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.Pirmas",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
+  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.Paskutinis"
 ];
 export class InteractiveMap extends Component {
   constructor(props) {
@@ -190,8 +214,9 @@ export class InteractiveMap extends Component {
       mediaPlayState: false,
       mediaRef: undefined,
       videoIndex: 0,
+      audioIndex: 0,
       modelSelected: 1,
-      modelFullScreenClicked: false
+      fullScreenClicked: false
     };
     this.categoriesRefs = {};
     this.logoButtonRefs = {};
@@ -253,6 +278,10 @@ export class InteractiveMap extends Component {
         }
       }
     }
+
+    if (this.state.containerType !== prevState.containerType && this.state.containerType === "audio") {
+      this.audioAboutRef.current.play();
+    }
   }
 
   mouseEnterMapHandler = () => {
@@ -267,13 +296,12 @@ export class InteractiveMap extends Component {
   };
 
   openContainerClicked = (type, index, contentIndex) => {
-    console.log(type);
     if (this.state.containerType === "") {
       this.setState({ containerType: type, containerIndex: index });
       if (type === "audio") {
-        this.setState({ mediaRef: this.audioAboutRef });
+        this.setState({ mediaRef: this.audioAboutRef, audioIndex: contentIndex });
       } else if (type === "video") {
-        this.setState({ mediaRef: this.videoAboutRef, videoIndex: index - 2 });
+        this.setState({ mediaRef: this.videoAboutRef, videoIndex: index });
       }
     } else if (this.state.containerType !== "") {
       this.setState({ containerType: "", containerIndex: 0 });
@@ -282,12 +310,14 @@ export class InteractiveMap extends Component {
     if (contentIndex !== undefined) {
       this.setState({ contentIndex: contentIndex });
     }
-    this.videoAboutRef.current.pause();
-    this.videoAboutRef.current.currentTime = 0;
-    this.audioAboutRef.current.pause();
-    this.audioAboutRef.current.currentTime = 0;
+    if (type === undefined) {
+      this.videoAboutRef.current.pause();
+      this.videoAboutRef.current.currentTime = 0;
+      this.audioAboutRef.current.pause();
+      this.audioAboutRef.current.currentTime = 0;
+    }
 
-    this.setState({ modelFullScreenClicked: false, modelSelected: 1 });
+    this.setState({ fullScreenClicked: false, modelSelected: 1 });
   };
 
   buttonPlayClickedHandler = (ref) => {
@@ -319,13 +349,13 @@ export class InteractiveMap extends Component {
     this.setState({ confirmVROpen: true, containerType: "" });
   };
 
-  modelFullScreenClicked = () => {
-    const currentState = this.state.modelFullScreenClicked;
-    this.setState({ modelFullScreenClicked: !currentState });
+  fullScreenClicked = () => {
+    const currentState = this.state.fullScreenClicked;
+    this.setState({ fullScreenClicked: !currentState });
   };
 
   render() {
-    const modelFullScreenClass = this.state.modelFullScreenClicked ? "model-window-full-screen" : "";
+    const fullScreenClass = this.state.fullScreenClicked ? "window-full-screen" : "";
     return (
       <div className="interactive-map-section">
         <div className="map-container">
@@ -341,30 +371,33 @@ export class InteractiveMap extends Component {
                     className={`btn btn-${icon[0]}`}
                     key={`${icon[0]}${index}`}
                   >
-                    <div
-                      ref={(ref) => {
-                        this.logoInnactiveRefs[index] = ref;
-                      }}
-                      className={`logo logo-${icon[0]} logo-innactive`}
-                      style={{ backgroundImage: `url("${iconInnactiveUrl[index]}")` }}
-                    ></div>
-                    <div
-                      ref={(ref) => {
-                        this.logoHoveredRefs[index] = ref;
-                      }}
-                      className={`logo logo-${icon[0]} logo-hovered`}
-                      style={{ backgroundImage: `url("${iconHoveredUrl[index]}")` }}
-                    ></div>
-                    <div
-                      onClick={() => {
-                        this.openContainerClicked(icon[1], index, icon[2]);
-                      }}
-                      ref={(ref) => {
-                        this.logoClickedRefs[index] = ref;
-                      }}
-                      className={`logo logo-${icon[0]} logo-clicked`}
-                      style={{ backgroundImage: `url("${iconClickedUrl[index]}")` }}
-                    ></div>
+                    <div className="logo-wrapper">
+                      <div
+                        ref={(ref) => {
+                          this.logoInnactiveRefs[index] = ref;
+                        }}
+                        className={`logo logo-${icon[0]} logo-innactive`}
+                        style={{ backgroundImage: `url("${iconInnactiveUrl[index]}")` }}
+                      ></div>
+                      <div
+                        ref={(ref) => {
+                          this.logoHoveredRefs[index] = ref;
+                        }}
+                        className={`logo logo-${icon[0]} logo-hovered`}
+                        style={{ backgroundImage: `url("${iconHoveredUrl[index]}")` }}
+                      ></div>
+                      <div
+                        onClick={() => {
+                          this.openContainerClicked(icon[1], index, icon[2]);
+                        }}
+                        ref={(ref) => {
+                          this.logoClickedRefs[index] = ref;
+                        }}
+                        className={`logo logo-${icon[0]} logo-clicked`}
+                        style={{ backgroundImage: `url("${iconClickedUrl[index]}")` }}
+                      ></div>
+                    </div>
+                    {index > 13 ? <div className="location-title">Pastatas</div> : null}
                   </div>
                 );
               })}
@@ -413,34 +446,45 @@ export class InteractiveMap extends Component {
               display: this.state.containerType !== "virtual-reality" && this.state.containerType !== "model-view" ? "flex" : "none"
             }}
           >
-            <div className={`content-top ` + modelFullScreenClass}>
+            <div className={`content-top ` + fullScreenClass}>
               {/* Audio and video screens */}
               <div
                 className="media-screen"
                 style={{ display: this.state.containerType === "audio" || this.state.containerType === "video" ? "flex" : "none" }}
               >
-                <div className="video-container">
+                <div className="video-container" style={{ display: this.state.containerType === "video" ? "flex" : "none" }}>
                   <video ref={this.videoAboutRef}>
                     <source src={videoAboutArray[this.state.videoIndex]} type="video/mp4" />
                   </video>
+
+                  <div
+                    className="btn btn-play"
+                    onClick={() => {
+                      this.buttonPlayClickedHandler(this.state.mediaRef);
+                    }}
+                    style={{ display: this.state.mediaPlayState ? "none" : "flex" }}
+                  ></div>
+                  <div
+                    className="btn btn-play btn-pause"
+                    onClick={() => {
+                      this.buttonPlayClickedHandler(this.state.mediaRef);
+                    }}
+                    style={{ display: this.state.mediaPlayState ? "flex" : "none" }}
+                  ></div>
+                </div>
+
+                <div
+                  className="panorama-view-wrapper model-view-wrapper"
+                  style={{ display: this.state.containerType === "audio" ? "flex" : "none" }}
+                  key={`panorama${this.state.audioIndex}`}
+                >
+                  <PanoramaViewer />
                   <audio ref={this.audioAboutRef}>
-                    <source src={audioAbout} type="audio/mp3" />
+                    <source src={audioPanoramasArray[this.state.audioIndex]} type="audio/mp3" />
                   </audio>
                 </div>
-                <div
-                  className="btn btn-play"
-                  onClick={() => {
-                    this.buttonPlayClickedHandler(this.state.mediaRef);
-                  }}
-                  style={{ display: this.state.mediaPlayState ? "none" : "flex" }}
-                ></div>
-                <div
-                  className="btn btn-play btn-pause"
-                  onClick={() => {
-                    this.buttonPlayClickedHandler(this.state.mediaRef);
-                  }}
-                  style={{ display: this.state.mediaPlayState ? "flex" : "none" }}
-                ></div>
+
+                <div className="btn-full-screen" onClick={this.fullScreenClicked}></div>
               </div>
               {/* Gallery media screen start*/}
               <div className={`media-screen`} style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
@@ -473,8 +517,9 @@ export class InteractiveMap extends Component {
                 </div> */}
                 <div className="model-view-wrapper">
                   <ModelViewer contentIndex={this.state.modelSelected} key={this.state.modelSelected} />
-                  <div className="btn-full-screen" onClick={this.modelFullScreenClicked}></div>
+                  <div className="model-description">{modelDescription[this.state.modelSelected - 1]}</div>
                 </div>
+                <div className="btn-full-screen" onClick={this.fullScreenClicked}></div>
               </div>
               {/* Gallery media screen end*/}
               <div
