@@ -31,7 +31,6 @@ function Keen(props) {
     //metallness: 0,
     map: texture
   });
-
   modelMaterial.side = THREE.DoubleSide;
   const objectTransforms = [
     [

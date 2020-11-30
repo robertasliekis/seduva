@@ -38,7 +38,7 @@ export class WebsiteInfo extends Component {
             <h1>Virtualus Šeduvos turas:</h1>
             <h1>„Kelionė laiku“</h1>
           </div>
-          <div className="map-image"></div>
+          <a className="map-image" href="https://www.seduvoskultura.lt/" target="_blank" rel="noreferrer"></a>
         </div>
         <div className="text-boxes-container">
           <div className={`text-box text-box-lt ${textBoxLtClass}`}>

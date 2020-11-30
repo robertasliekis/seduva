@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ModelViewer from "./ModelViewer";
+import ModelViewerThree from "./ModelViewerThree";
 import PanoramaViewer from "./PanoramaViewer";
 
 import { mouseEnterMap, setScrollPosition } from "../actions";
@@ -126,31 +127,31 @@ const modalWindowText = [
     "Etnografė, Lietuvos šviesuolė Emilija Brajinskienė, dar vadinama Šeduvos Baba, gimė 1930 m. Ji yra surinkusi visą lietuvių liaudies kūrybos lobyną, kuriame yra dainuojamoji tautosaka (dainos, raudos) ir sakytinė tautosaka (pasakos, sakmės, padavimai, nutikimai, mįslės, minklės, patarlės, priežodžiai, burtai, oracijos ir kt.). Emilija yra puiki pasakotoja,turinti fenomenalią atmintį ir kalbanti šeduvių tarme."
   ],
   [
-    "1. Legenda „Malūnas“. Kodėl malūno sparnai sukasi be vėjo?",
+    "Legenda „Malūnas“. Kodėl malūno sparnai sukasi be vėjo?",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
   ],
   [
-    "2. Legenda „Velnias ne Boba“.",
+    "Legenda „Velnias ne Boba“.",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
   ],
   [
-    "3. Šeduvos ir Niauduvos vardų kilmė.",
+    "Šeduvos ir Niauduvos vardų kilmė.",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
   ],
   [
-    "4. Legenda „Švento Petro rakteliai“. Kodėl raktažolė dar vadinama Šv. Petro rakteliais?",
+    "Legenda „Švento Petro rakteliai“. Kodėl raktažolė dar vadinama Šv. Petro rakteliais?",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
   ],
   [
-    "5. Legenda „Kirkibala“ apie velnio monus.",
+    "Legenda „Kirkibala“ apie velnio monus.",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
   ],
   [
-    "6. Legenda „Vakoniškio laumės“.",
+    "Legenda „Vakoniškio laumės“.",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
   ],
   [
-    "7. Legenda „Šniūrgalis“ apie užkeiktą lobį.",
+    "Legenda „Šniūrgalis“ apie užkeiktą lobį.",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ullam autem totam atque in quaerat adipisci modi quibusdam alias possimus?"
   ],
   [
@@ -186,16 +187,16 @@ const modalWindowText = [
 ];
 
 const modelDescription = [
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.Pirmas",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque totam reprehenderit ex, at repellat minima.Paskutinis"
+  "Telefono komutatorius. Skirtas ryšių kanalams sujungti. 29 linijų su 8 svirtiniais perjungikliais ir 29 lizdais. Pagamintas SSRS XX a. vidurys.",
+  "Fotoaparatas. Fotoaparatas su dėklu. Pagamintas vokiečių firmos Vogtlander XX a. pirmoje pusėje.",
+  "Įmovinis ietigalis su karklo lapo formos plunksna. V – VIII amžius po Kr. Rastas Šeduvos apylinkėse.",
+  "Kardas su Rusijos imperijos caro Aleksandro III monograma. Rusijos imperijos 1881 metų modelio dragūnų karininko kardas. Rastas Šeduvoje.",
+  "Siauraašmenis įmovinis kirvis. III – V amžius po Kr. Rastas Šeduvos apylinkėse.",
+  "Lazda. Drožta iš obels medžio. 1936 metais ją išdrožė Šeduvoje gyvenęs liaudies meistras Jonas Lesčinskas.",
+  "Lygintuvas-laidynė. XX a. pirma pusė. Rastas Šeduvoje.",
+  "Puodelis. Sidabrinis. Pagamintas Maskvoje Ivano Svešnikovo fabrike 1881 metais. Rastas Šeduvoje Kėdainių gatvėje.",
+  "Nepriklausomos Lietuvos kaimo seniūno ženklas. Skydelyje pavaizduota krivulė. XX a. pirma pusė.",
+  "Šeduvos miesto rotušės spaudas. Naudotas carinės Rusijos okupacijos laikais. XX a. pr. Rastas Šeduvoje verčiant seną namą Laisvės aikštėje."
 ];
 export class InteractiveMap extends Component {
   constructor(props) {
@@ -216,13 +217,15 @@ export class InteractiveMap extends Component {
       videoIndex: 0,
       audioIndex: 0,
       modelSelected: 1,
-      fullScreenClicked: false
+      fullScreenClicked: false,
+      clickCount: 0
     };
     this.categoriesRefs = {};
     this.logoButtonRefs = {};
     this.logoInnactiveRefs = {};
     this.logoHoveredRefs = {};
     this.logoClickedRefs = {};
+    this.mediaScreenRef = React.createRef();
     this.videoAboutRef = React.createRef();
     this.audioAboutRef = React.createRef();
   }
@@ -299,7 +302,7 @@ export class InteractiveMap extends Component {
     if (this.state.containerType === "") {
       this.setState({ containerType: type, containerIndex: index });
       if (type === "audio") {
-        this.setState({ mediaRef: this.audioAboutRef, audioIndex: contentIndex });
+        this.setState({ mediaRef: this.audioAboutRef, audioIndex: contentIndex, modelSelected: contentIndex });
       } else if (type === "video") {
         this.setState({ mediaRef: this.videoAboutRef, videoIndex: index });
       }
@@ -316,9 +319,14 @@ export class InteractiveMap extends Component {
       this.audioAboutRef.current.pause();
       this.audioAboutRef.current.currentTime = 0;
     }
-
     this.setState({ fullScreenClicked: false, modelSelected: 1 });
+    this.renderModelView();
   };
+
+  renderModelView() {
+    let currentClickCount = this.state.clickCount;
+    this.setState({ clickCount: currentClickCount + 1 });
+  }
 
   buttonPlayClickedHandler = (ref) => {
     let currentMediaState = this.state.mediaPlayState;
@@ -335,6 +343,7 @@ export class InteractiveMap extends Component {
     if (this.state.modelSelected !== 10) {
       this.setState({ modelSelected: this.state.modelSelected + 1 });
     }
+    this.renderModelView();
   };
   previousImageClicked = () => {
     // if (this.state.galleryImageIndex !== 0) {
@@ -343,6 +352,7 @@ export class InteractiveMap extends Component {
     if (this.state.modelSelected !== 1) {
       this.setState({ modelSelected: this.state.modelSelected - 1 });
     }
+    this.renderModelView();
   };
 
   btnVRConfirmClicked = () => {
@@ -352,6 +362,8 @@ export class InteractiveMap extends Component {
   fullScreenClicked = () => {
     const currentState = this.state.fullScreenClicked;
     this.setState({ fullScreenClicked: !currentState });
+
+    this.renderModelView();
   };
 
   render() {
@@ -478,7 +490,13 @@ export class InteractiveMap extends Component {
                   style={{ display: this.state.containerType === "audio" ? "flex" : "none" }}
                   key={`panorama${this.state.audioIndex}`}
                 >
-                  <PanoramaViewer />
+                  {/* <PanoramaViewer /> */}
+                  <ModelViewerThree
+                    containerType={this.state.containerType}
+                    contentIndex={this.state.modelSelected}
+                    clickCount={this.state.clickCount}
+                    key={this.state.clickCount}
+                  />
                   <audio ref={this.audioAboutRef}>
                     <source src={audioPanoramasArray[this.state.audioIndex]} type="audio/mp3" />
                   </audio>
@@ -487,14 +505,19 @@ export class InteractiveMap extends Component {
                 <div className="btn-full-screen" onClick={this.fullScreenClicked}></div>
               </div>
               {/* Gallery media screen start*/}
-              <div className={`media-screen`} style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
+              <div
+                className={`media-screen`}
+                ref={this.mediaScreenRef}
+                style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}
+              >
                 <div className="buttons">
                   <div
                     className="btn btn-gallery btn-previous"
                     onClick={this.previousImageClicked}
                     style={{
                       opacity: this.state.modelSelected === 1 ? 0.6 : 1,
-                      cursor: this.state.modelSelected === 1 ? "default" : "pointer"
+                      cursor: this.state.modelSelected === 1 ? "default" : "pointer",
+                      pointerEvents: this.state.modelSelected === 1 ? "none" : "auto"
                     }}
                   ></div>
                   <div
@@ -502,21 +525,19 @@ export class InteractiveMap extends Component {
                     onClick={this.nextImageClicked}
                     style={{
                       opacity: this.state.modelSelected === 10 ? 0.6 : 1,
-                      cursor: this.state.modelSelected === 10 ? "default" : "pointer"
+                      cursor: this.state.modelSelected === 10 ? "default" : "pointer",
+                      pointerEvents: this.state.modelSelected === 10 ? "none" : "auto"
                     }}
                   ></div>
                 </div>
-                {/* <div className={`image-container`}>
-                  <div className="image-carousel-overflow">
-                    <div className="image-carousel " style={{ left: `${this.state.galleryImageIndex * -100}%` }}>
-                      {imageNumbers.map((imageNumber) => {
-                        return <div key={"image" + imageNumber} className="image"></div>;
-                      })}
-                    </div>
-                  </div>
-                </div> */}
                 <div className="model-view-wrapper">
-                  <ModelViewer contentIndex={this.state.modelSelected} key={this.state.modelSelected} />
+                  {/* <ModelViewer contentIndex={this.state.modelSelected} key={this.state.modelSelected} /> */}
+                  <ModelViewerThree
+                    containerType={this.state.containerType}
+                    contentIndex={this.state.modelSelected}
+                    clickCount={this.state.clickCount}
+                    key={this.state.clickCount}
+                  />
                   <div className="model-description">{modelDescription[this.state.modelSelected - 1]}</div>
                 </div>
                 <div className="btn-full-screen" onClick={this.fullScreenClicked}></div>
@@ -531,17 +552,6 @@ export class InteractiveMap extends Component {
             </div>
             <div className="content-bottom">
               <div className="content-bottom-wrapper">
-                {/* <div className="image-container" style={{ display: this.state.containerType === "gallery" ? "flex" : "none" }}>
-                  {imageNumbers.map((imageNumber, index) => {
-                    return (
-                      <div
-                        key={"image" + imageNumber}
-                        className="image"
-                        style={{ opacity: index === this.state.galleryImageIndex ? 1 : 0.5 }}
-                      ></div>
-                    );
-                  })}
-                </div> */}
                 <h1>{modalWindowText[this.state.containerIndex][0]}</h1>
                 <p>{modalWindowText[this.state.containerIndex][1]}</p>
               </div>
