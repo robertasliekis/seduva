@@ -276,7 +276,7 @@ export class InteractiveMap extends Component {
 
     if (this.state.containerType !== prevState.containerType && this.state.containerType === "audio" && this.props.modelLoaded === true) {
       this.audioAboutRef.current.play();
-      console.log(" ");
+      console.log("audio play");
     }
   }
 
