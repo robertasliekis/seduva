@@ -1,31 +1,31 @@
 {
   "files": {
-    "main.css": "//robertasliekis.github.io/seduva/static/css/main.5adbc7df.chunk.css",
-    "main.js": "//robertasliekis.github.io/seduva/static/js/main.6b320d3f.chunk.js",
-    "main.js.map": "//robertasliekis.github.io/seduva/static/js/main.6b320d3f.chunk.js.map",
-    "runtime-main.js": "//robertasliekis.github.io/seduva/static/js/runtime-main.f13d1d74.js",
-    "runtime-main.js.map": "//robertasliekis.github.io/seduva/static/js/runtime-main.f13d1d74.js.map",
-    "static/js/2.76da2b1a.chunk.js": "//robertasliekis.github.io/seduva/static/js/2.76da2b1a.chunk.js",
-    "static/js/2.76da2b1a.chunk.js.map": "//robertasliekis.github.io/seduva/static/js/2.76da2b1a.chunk.js.map",
-    "static/js/3.dd58226b.chunk.js": "//robertasliekis.github.io/seduva/static/js/3.dd58226b.chunk.js",
-    "static/js/3.dd58226b.chunk.js.map": "//robertasliekis.github.io/seduva/static/js/3.dd58226b.chunk.js.map",
+    "main.css": "//robertasliekis.github.io/seduva/static/css/main.722e9a4c.chunk.css",
+    "main.js": "//robertasliekis.github.io/seduva/static/js/main.6a7d7c96.chunk.js",
+    "main.js.map": "//robertasliekis.github.io/seduva/static/js/main.6a7d7c96.chunk.js.map",
+    "runtime-main.js": "//robertasliekis.github.io/seduva/static/js/runtime-main.5a4fcaa1.js",
+    "runtime-main.js.map": "//robertasliekis.github.io/seduva/static/js/runtime-main.5a4fcaa1.js.map",
+    "static/js/2.06438ee9.chunk.js": "//robertasliekis.github.io/seduva/static/js/2.06438ee9.chunk.js",
+    "static/js/2.06438ee9.chunk.js.map": "//robertasliekis.github.io/seduva/static/js/2.06438ee9.chunk.js.map",
+    "static/js/3.d58bdb49.chunk.js": "//robertasliekis.github.io/seduva/static/js/3.d58bdb49.chunk.js",
+    "static/js/3.d58bdb49.chunk.js.map": "//robertasliekis.github.io/seduva/static/js/3.d58bdb49.chunk.js.map",
     "index.html": "//robertasliekis.github.io/seduva/index.html",
-    "static/css/main.5adbc7df.chunk.css.map": "//robertasliekis.github.io/seduva/static/css/main.5adbc7df.chunk.css.map",
-    "static/js/2.76da2b1a.chunk.js.LICENSE.txt": "//robertasliekis.github.io/seduva/static/js/2.76da2b1a.chunk.js.LICENSE.txt",
+    "static/css/main.722e9a4c.chunk.css.map": "//robertasliekis.github.io/seduva/static/css/main.722e9a4c.chunk.css.map",
+    "static/js/2.06438ee9.chunk.js.LICENSE.txt": "//robertasliekis.github.io/seduva/static/js/2.06438ee9.chunk.js.LICENSE.txt",
     "static/media/index.css": "//robertasliekis.github.io/seduva/static/media/simkunaite4.1b80e9a4.jpg",
+    "static/media/audio_background.72a221e0.mp3": "//robertasliekis.github.io/seduva/static/media/audio_background.72a221e0.mp3",
     "static/media/audio_baznycia.31f21a20.mp3": "//robertasliekis.github.io/seduva/static/media/audio_baznycia.31f21a20.mp3",
     "static/media/audio_kapines.60a82e7f.mp3": "//robertasliekis.github.io/seduva/static/media/audio_kapines.60a82e7f.mp3",
     "static/media/audio_karcema.9b43efce.mp3": "//robertasliekis.github.io/seduva/static/media/audio_karcema.9b43efce.mp3",
     "static/media/audio_malunas.29f644ca.mp3": "//robertasliekis.github.io/seduva/static/media/audio_malunas.29f644ca.mp3",
     "static/media/audio_retromobiliai.738a67fb.mp3": "//robertasliekis.github.io/seduva/static/media/audio_retromobiliai.738a67fb.mp3",
-    "static/media/baba-about.7ef1e940.mp3": "//robertasliekis.github.io/seduva/static/media/baba-about.7ef1e940.mp3",
-    "static/media/sounds.4eaa207b.mp3": "//robertasliekis.github.io/seduva/static/media/sounds.4eaa207b.mp3",
-    "static/media/video1.01f03a3c.mp4": "//robertasliekis.github.io/seduva/static/media/video1.01f03a3c.mp4"
+    "static/media/babos_video.bbccd925.mp4": "//robertasliekis.github.io/seduva/static/media/babos_video.bbccd925.mp4",
+    "static/media/video1.7a53d329.mp4": "//robertasliekis.github.io/seduva/static/media/video1.7a53d329.mp4"
   },
   "entrypoints": [
-    "static/js/runtime-main.f13d1d74.js",
-    "static/js/2.76da2b1a.chunk.js",
-    "static/css/main.5adbc7df.chunk.css",
-    "static/js/main.6b320d3f.chunk.js"
+    "static/js/runtime-main.5a4fcaa1.js",
+    "static/js/2.06438ee9.chunk.js",
+    "static/css/main.722e9a4c.chunk.css",
+    "static/js/main.6a7d7c96.chunk.js"
   ]
 }
