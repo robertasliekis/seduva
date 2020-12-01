@@ -162,14 +162,14 @@ class ModelViewerThree extends Component {
 
     manager.onProgress = function () {};
 
-    this.loader = new GLTFLoader(manager);
+    this.loader = new GLTFLoader();
     if (modelUrl !== undefined) {
       this.loader.load(
         modelUrl,
         (gltf) => {
           this.model = gltf.scene;
           this.setModelTransforms();
-          const textureLoader = new TextureLoader();
+          const textureLoader = new TextureLoader(manager);
           const texture = textureLoader.load(textureUrl);
           texture.wrapS = THREE.RepeatWrapping;
           texture.flipY = false;
