@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ModelViewerThree from "./ModelViewerThree";
 
-import { playBackgroundAudio } from "../actions";
+import { playBackgroundAudio, setModelLoaded } from "../actions";
 
 import videoAbout1 from "../video/babos_video.mp4";
 import videoAbout2 from "../video/video1.mp4";
@@ -274,7 +274,7 @@ export class InteractiveMap extends Component {
       }
     }
 
-    if (this.state.containerType !== prevState.containerType && this.state.containerType === "audio") {
+    if (this.state.containerType !== prevState.containerType && this.state.containerType === "audio" && this.props.modelLoaded === true) {
       this.audioAboutRef.current.play();
     }
   }
@@ -550,11 +550,14 @@ export class InteractiveMap extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    modelLoaded: state.setModelLoaded.modelLoaded
+  };
 };
 
 const mapDispatchToProps = {
-  playBackgroundAudio
+  playBackgroundAudio,
+  setModelLoaded
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(InteractiveMap);

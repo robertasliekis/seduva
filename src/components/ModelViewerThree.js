@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TextureLoader, MeshStandardMaterial } from "three";
+import { connect } from "react-redux";
+import { setModelLoaded } from "../actions";
 
 import OrbitControls from "three-orbitcontrols";
 
@@ -153,11 +155,13 @@ class ModelViewerThree extends Component {
 
     const manager = new THREE.LoadingManager();
     manager.onStart = () => {
-      this.setState({ modelLoading: true });
+      //this.setState({ modelLoading: true });
+      this.props.setModelLoaded(false);
     };
 
     manager.onLoad = () => {
-      this.setState({ modelLoading: false });
+      // this.setState({ modelLoading: false });
+      this.props.setModelLoaded(true);
     };
 
     manager.onProgress = function () {};
@@ -238,11 +242,22 @@ class ModelViewerThree extends Component {
           this.mount = mount;
         }}
       >
-        <div className="loading-screen" style={{ display: this.state.modelLoading ? "flex" : "none" }}>
+        <div className="loading-screen" style={{ display: this.props.modelLoaded ? "none" : "flex" }}>
           <div className="icon"></div>
         </div>
       </div>
     );
   }
 }
-export default ModelViewerThree;
+
+const mapStateToProps = (state) => {
+  return {
+    modelLoaded: state.setModelLoaded.modelLoaded
+  };
+};
+
+const mapDispatchToProps = {
+  setModelLoaded
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModelViewerThree);

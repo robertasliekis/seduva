@@ -18,3 +18,10 @@ export const playBackgroundAudio = (bool) => {
     payload: bool
   };
 };
+
+export const setModelLoaded = (bool) => {
+  return {
+    type: "SET_MODEL_LOADED",
+    payload: bool
+  };
+};
