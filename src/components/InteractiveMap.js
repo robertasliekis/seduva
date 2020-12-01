@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ModelViewer from "./ModelViewer";
 import ModelViewerThree from "./ModelViewerThree";
-import PanoramaViewer from "./PanoramaViewer";
 
-import { mouseEnterMap, setScrollPosition } from "../actions";
+import { playBackgroundAudio } from "../actions";
 
-import videoAbout1 from "../video/video1.mp4";
+import videoAbout1 from "../video/babos_video.mp4";
 import videoAbout2 from "../video/video1.mp4";
 import videoAbout3 from "../video/video1.mp4";
 import videoAbout4 from "../video/video1.mp4";
@@ -21,13 +19,9 @@ import audioPanorama3 from "../audio/audio_retromobiliai.mp3";
 import audioPanorama4 from "../audio/audio_karcema.mp3";
 import audioPanorama5 from "../audio/audio_kapines.mp3";
 
-import audioAbout from "../audio/baba-about.mp3";
-
 const videoAboutArray = [videoAbout1, videoAbout2, videoAbout3, videoAbout4, videoAbout5, videoAbout6, videoAbout7, videoAbout8];
 
 const audioPanoramasArray = [audioPanorama1, audioPanorama2, audioPanorama3, audioPanorama4, audioPanorama5];
-
-const imageNumbers = [1, 2, 3, 4, 5];
 
 const categoriesNames = [
   ["Šeduvos istorija", "history"],
@@ -232,13 +226,11 @@ export class InteractiveMap extends Component {
   mouseEnterCategory = (type) => {
     this.setState({
       categoryTypeHovered: type
-      //categoryTypeClicked: ""
     });
   };
   mouseLeaveCategory = () => {
     this.setState({
       categoryTypeHovered: ""
-      // categoryTypeClicked: ""
     });
   };
 
@@ -287,17 +279,6 @@ export class InteractiveMap extends Component {
     }
   }
 
-  mouseEnterMapHandler = () => {
-    this.props.mouseEnterMap(true);
-    this.setState({ scrollPosition: window.pageYOffset });
-    this.props.setScrollPosition(window.pageYOffset);
-  };
-
-  mouseLeaveMapHandler = () => {
-    this.props.mouseEnterMap(false);
-    this.props.setScrollPosition(0);
-  };
-
   openContainerClicked = (type, index, contentIndex) => {
     if (this.state.containerType === "") {
       this.setState({ containerType: type, containerIndex: index });
@@ -331,24 +312,19 @@ export class InteractiveMap extends Component {
   buttonPlayClickedHandler = (ref) => {
     let currentMediaState = this.state.mediaPlayState;
     this.setState({ mediaPlayState: !currentMediaState });
+    this.props.playBackgroundAudio(false);
     if (currentMediaState) {
       ref.current.pause();
     } else ref.current.play();
   };
 
-  nextImageClicked = () => {
-    // if (this.state.galleryImageIndex !== 4) {
-    //   this.setState({ galleryImageIndex: this.state.galleryImageIndex + 1 });
-    // }
+  nextModelClicked = () => {
     if (this.state.modelSelected !== 10) {
       this.setState({ modelSelected: this.state.modelSelected + 1 });
     }
     this.renderModelView();
   };
-  previousImageClicked = () => {
-    // if (this.state.galleryImageIndex !== 0) {
-    //   this.setState({ galleryImageIndex: this.state.galleryImageIndex - 1 });
-    // }
+  previousModelClicked = () => {
     if (this.state.modelSelected !== 1) {
       this.setState({ modelSelected: this.state.modelSelected - 1 });
     }
@@ -362,7 +338,6 @@ export class InteractiveMap extends Component {
   fullScreenClicked = () => {
     const currentState = this.state.fullScreenClicked;
     this.setState({ fullScreenClicked: !currentState });
-
     this.renderModelView();
   };
 
@@ -373,6 +348,7 @@ export class InteractiveMap extends Component {
         <div className="map-container">
           <div className="map-images-container">
             <div className="main-map-image"></div>
+            {/* icons start-------------------------- */}
             <div className="map-icons-container">
               {iconNames.map((icon, index) => {
                 return (
@@ -413,7 +389,6 @@ export class InteractiveMap extends Component {
                   </div>
                 );
               })}
-
               {/* icons end-------------------------- */}
             </div>
           </div>
@@ -446,7 +421,6 @@ export class InteractiveMap extends Component {
             </div>
           </div>
         </div>
-
         {/* Modal window containers */}
         <div
           className={`modal-window-container window-${this.state.containerType}`}
@@ -513,7 +487,7 @@ export class InteractiveMap extends Component {
                 <div className="buttons">
                   <div
                     className="btn btn-gallery btn-previous"
-                    onClick={this.previousImageClicked}
+                    onClick={this.previousModelClicked}
                     style={{
                       opacity: this.state.modelSelected === 1 ? 0.6 : 1,
                       cursor: this.state.modelSelected === 1 ? "default" : "pointer",
@@ -522,7 +496,7 @@ export class InteractiveMap extends Component {
                   ></div>
                   <div
                     className="btn btn-gallery btn-next"
-                    onClick={this.nextImageClicked}
+                    onClick={this.nextModelClicked}
                     style={{
                       opacity: this.state.modelSelected === 10 ? 0.6 : 1,
                       cursor: this.state.modelSelected === 10 ? "default" : "pointer",
@@ -531,7 +505,6 @@ export class InteractiveMap extends Component {
                   ></div>
                 </div>
                 <div className="model-view-wrapper">
-                  {/* <ModelViewer contentIndex={this.state.modelSelected} key={this.state.modelSelected} /> */}
                   <ModelViewerThree
                     containerType={this.state.containerType}
                     contentIndex={this.state.modelSelected}
@@ -569,7 +542,6 @@ export class InteractiveMap extends Component {
             style={{ display: this.state.containerType === "model-view" ? "flex" : "none" }}
           >
             <div className="btn btn-close" onClick={this.openContainerClicked}></div>
-            {/* <ModelViewer contentIndex={this.state.contentIndex} /> */}
           </div>
         </div>
       </div>
@@ -578,14 +550,11 @@ export class InteractiveMap extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    mapEntered: state.mouseEnterMap.mapEntered
-  };
+  return {};
 };
 
 const mapDispatchToProps = {
-  mouseEnterMap,
-  setScrollPosition
+  playBackgroundAudio
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(InteractiveMap);

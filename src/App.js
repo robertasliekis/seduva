@@ -1,9 +1,9 @@
 import "./App.css";
 import React from "react";
+
 import Header from "./components/Header";
 import WebsiteInfo from "./components/WebsiteInfo";
 import InteractiveMap from "./components/InteractiveMap";
-import ModelViewerThree from "./components/ModelViewerThree";
 
 // "homepage": "http://https://robertasliekis.github.io/seduva/",
 
@@ -16,7 +16,6 @@ class App extends React.Component {
             <Header />
             <WebsiteInfo />
             <InteractiveMap />
-            {/* <ModelViewerThree /> */}
           </div>
         </div>
       </div>

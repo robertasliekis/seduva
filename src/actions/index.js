@@ -11,3 +11,10 @@ export const setScrollPosition = (number) => {
     payload: number
   };
 };
+
+export const playBackgroundAudio = (bool) => {
+  return {
+    type: "PLAY_BACKGROUND_AUDIO",
+    payload: bool
+  };
+};

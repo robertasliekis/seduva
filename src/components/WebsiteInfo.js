@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
 export class WebsiteInfo extends Component {
   constructor(props) {
@@ -8,7 +7,6 @@ export class WebsiteInfo extends Component {
       readMoreLtClicked: false,
       readMoreEnClicked: false
     };
-    //  this.videoRef = React.createRef();
   }
 
   readMoreLtClicked = () => {
@@ -25,20 +23,17 @@ export class WebsiteInfo extends Component {
     const textBoxEnClass = this.state.readMoreEnClicked ? "text-box-en-open" : "";
 
     return (
-      <div
-        className="website-info"
-        style={
-          {
-            // height: this.props.mapEntered ? "40rem" : "16rem"
-          }
-        }
-      >
+      <div className="website-info">
         <div className="website-info-top">
           <div className="text-box">
             <h1>Virtualus Šeduvos turas:</h1>
             <h1>„Kelionė laiku“</h1>
           </div>
-          <a className="map-image" href="https://www.seduvoskultura.lt/" target="_blank" rel="noreferrer"></a>
+          <a className="map-image" href="https://www.seduvoskultura.lt/" target="_blank" rel="noreferrer">
+            <div className="logo-text" style={{ display: "none" }}>
+              text
+            </div>
+          </a>
         </div>
         <div className="text-boxes-container">
           <div className={`text-box text-box-lt ${textBoxLtClass}`}>
@@ -78,14 +73,4 @@ export class WebsiteInfo extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    mapEntered: state.mouseEnterMap.mapEntered
-  };
-};
-
-const mapDispatchToProps = {
-  // changePageNumber,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(WebsiteInfo);
+export default WebsiteInfo;

@@ -58,7 +58,13 @@ const objectTransforms = [
   ]
 ];
 
-class ThreeScene extends Component {
+class ModelViewerThree extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modelLoading: false
+    };
+  }
   componentDidMount() {
     const width = this.mount.clientWidth;
     const height = this.mount.clientHeight;
@@ -83,6 +89,7 @@ class ThreeScene extends Component {
       transform.x = objectTransforms[this.props.contentIndex - 1][index][0];
       transform.y = objectTransforms[this.props.contentIndex - 1][index][1];
       transform.z = objectTransforms[this.props.contentIndex - 1][index][2];
+      return null;
     });
   }
 
@@ -145,17 +152,15 @@ class ThreeScene extends Component {
     }
 
     const manager = new THREE.LoadingManager();
-    manager.onStart = function () {
-      console.log("Started loading files.");
+    manager.onStart = () => {
+      this.setState({ modelLoading: true });
     };
 
-    manager.onLoad = function () {
-      console.log("Loading complete!");
+    manager.onLoad = () => {
+      this.setState({ modelLoading: false });
     };
 
-    manager.onProgress = function () {
-      console.log("Files are loading");
-    };
+    manager.onProgress = function () {};
 
     this.loader = new GLTFLoader(manager);
     if (modelUrl !== undefined) {
@@ -181,11 +186,10 @@ class ThreeScene extends Component {
           this.scene.add(this.model);
         },
         function (xhr) {
-          console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          // console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
         },
-        // called when loading has errors
         function (error) {
-          console.log("An error happened");
+          //console.log("An error happened");
         }
       );
     }
@@ -233,8 +237,12 @@ class ThreeScene extends Component {
         ref={(mount) => {
           this.mount = mount;
         }}
-      ></div>
+      >
+        <div className="loading-screen" style={{ display: this.state.modelLoading ? "flex" : "none" }}>
+          <div className="icon"></div>
+        </div>
+      </div>
     );
   }
 }
-export default ThreeScene;
+export default ModelViewerThree;

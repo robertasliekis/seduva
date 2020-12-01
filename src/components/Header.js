@@ -1,31 +1,38 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { playBackgroundAudio } from "../actions";
 
-import audioBackground from "../audio/sounds.mp3";
+import audioBackground from "../audio/audio_background.mp3";
 
 export class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      playBackgroundAudio: false
-    };
     this.audioBackgroundRef = React.createRef();
   }
 
   btnPlayBackgroundAudio = () => {
-    let initialState = this.state.playBackgroundAudio;
+    let initialState = this.props.backgroundAudioPlaying;
     if (initialState) {
       this.audioBackgroundRef.current.pause();
     } else {
       this.audioBackgroundRef.current.play();
+      this.audioBackgroundRef.current.volume = 0.5;
     }
-    this.setState({ playBackgroundAudio: !initialState });
+    this.props.playBackgroundAudio(!initialState);
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.backgroundAudioPlaying !== prevProps.backgroundAudioPlaying) {
+      if (!this.props.backgroundAudioPlaying) {
+        this.audioBackgroundRef.current.pause();
+      }
+    }
+  }
   render() {
     return (
       <div className="header">
         <div className="btn btn-audio" onClick={this.btnPlayBackgroundAudio}>
-          {this.state.playBackgroundAudio ? <div className="icon icon-audio-pause"></div> : <div className="icon icon-audio-play"></div>}
+          {this.props.backgroundAudioPlaying ? <div className="icon icon-audio-pause"></div> : <div className="icon icon-audio-play"></div>}
         </div>
 
         <audio loop ref={this.audioBackgroundRef}>
@@ -38,12 +45,12 @@ export class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mapEntered: state.mouseEnterMap.mapEntered
+    backgroundAudioPlaying: state.playBackgroundAudio.backgroundAudioPlaying
   };
 };
 
 const mapDispatchToProps = {
-  // changePageNumber,
+  playBackgroundAudio
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
