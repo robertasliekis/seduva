@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/seduva/static/css/main.ec3a2287.chunk.css",
-    "main.js": "/seduva/static/js/main.76e8a878.chunk.js",
-    "main.js.map": "/seduva/static/js/main.76e8a878.chunk.js.map",
+    "main.css": "/seduva/static/css/main.3d46e2af.chunk.css",
+    "main.js": "/seduva/static/js/main.96b8d50e.chunk.js",
+    "main.js.map": "/seduva/static/js/main.96b8d50e.chunk.js.map",
     "runtime-main.js": "/seduva/static/js/runtime-main.4e5e7891.js",
     "runtime-main.js.map": "/seduva/static/js/runtime-main.4e5e7891.js.map",
     "static/js/2.100185e3.chunk.js": "/seduva/static/js/2.100185e3.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.d58bdb49.chunk.js": "/seduva/static/js/3.d58bdb49.chunk.js",
     "static/js/3.d58bdb49.chunk.js.map": "/seduva/static/js/3.d58bdb49.chunk.js.map",
     "index.html": "/seduva/index.html",
-    "static/css/main.ec3a2287.chunk.css.map": "/seduva/static/css/main.ec3a2287.chunk.css.map",
+    "static/css/main.3d46e2af.chunk.css.map": "/seduva/static/css/main.3d46e2af.chunk.css.map",
     "static/js/2.100185e3.chunk.js.LICENSE.txt": "/seduva/static/js/2.100185e3.chunk.js.LICENSE.txt",
     "static/media/index.css": "/seduva/static/media/loading_icon.5e03078a.png",
     "static/media/audio_background.72a221e0.mp3": "/seduva/static/media/audio_background.72a221e0.mp3",
@@ -31,7 +31,7 @@
   "entrypoints": [
     "static/js/runtime-main.4e5e7891.js",
     "static/js/2.100185e3.chunk.js",
-    "static/css/main.ec3a2287.chunk.css",
-    "static/js/main.76e8a878.chunk.js"
+    "static/css/main.3d46e2af.chunk.css",
+    "static/js/main.96b8d50e.chunk.js"
   ]
 }
