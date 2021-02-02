@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/seduva/static/css/main.c9db987c.chunk.css",
-    "main.js": "/seduva/static/js/main.e9f391c6.chunk.js",
-    "main.js.map": "/seduva/static/js/main.e9f391c6.chunk.js.map",
+    "main.js": "/seduva/static/js/main.c96be923.chunk.js",
+    "main.js.map": "/seduva/static/js/main.c96be923.chunk.js.map",
     "runtime-main.js": "/seduva/static/js/runtime-main.4e5e7891.js",
     "runtime-main.js.map": "/seduva/static/js/runtime-main.4e5e7891.js.map",
     "static/js/2.100185e3.chunk.js": "/seduva/static/js/2.100185e3.chunk.js",
@@ -32,6 +32,6 @@
     "static/js/runtime-main.4e5e7891.js",
     "static/js/2.100185e3.chunk.js",
     "static/css/main.c9db987c.chunk.css",
-    "static/js/main.e9f391c6.chunk.js"
+    "static/js/main.c96be923.chunk.js"
   ]
 }
