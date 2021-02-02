@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/seduva/static/css/main.f83b8f38.chunk.css",
-    "main.js": "/seduva/static/js/main.37359133.chunk.js",
-    "main.js.map": "/seduva/static/js/main.37359133.chunk.js.map",
+    "main.js": "/seduva/static/js/main.3e1f010e.chunk.js",
+    "main.js.map": "/seduva/static/js/main.3e1f010e.chunk.js.map",
     "runtime-main.js": "/seduva/static/js/runtime-main.4e5e7891.js",
     "runtime-main.js.map": "/seduva/static/js/runtime-main.4e5e7891.js.map",
     "static/js/2.100185e3.chunk.js": "/seduva/static/js/2.100185e3.chunk.js",
@@ -22,7 +22,9 @@
     "static/media/babos_video.679f2ea8.mp4": "/seduva/static/media/babos_video.679f2ea8.mp4",
     "static/media/legendos_video_01.de5430a9.mp4": "/seduva/static/media/legendos_video_01.de5430a9.mp4",
     "static/media/legendos_video_02.f60b18a5.mp4": "/seduva/static/media/legendos_video_02.f60b18a5.mp4",
+    "static/media/legendos_video_03.4c0ddfcf.mp4": "/seduva/static/media/legendos_video_03.4c0ddfcf.mp4",
     "static/media/legendos_video_04.7ed6e197.mp4": "/seduva/static/media/legendos_video_04.7ed6e197.mp4",
+    "static/media/legendos_video_05.3b2127a2.mp4": "/seduva/static/media/legendos_video_05.3b2127a2.mp4",
     "static/media/legendos_video_06.36331065.mp4": "/seduva/static/media/legendos_video_06.36331065.mp4",
     "static/media/legendos_video_07.47c8349f.mp4": "/seduva/static/media/legendos_video_07.47c8349f.mp4"
   },
@@ -30,6 +32,6 @@
     "static/js/runtime-main.4e5e7891.js",
     "static/js/2.100185e3.chunk.js",
     "static/css/main.f83b8f38.chunk.css",
-    "static/js/main.37359133.chunk.js"
+    "static/js/main.3e1f010e.chunk.js"
   ]
 }
